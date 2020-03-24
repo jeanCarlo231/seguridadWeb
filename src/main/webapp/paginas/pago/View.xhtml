@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPagoLabel_idPago}"/>
+                    <h:outputText value="#{pagoController.selected.idPago}" title="#{bundle.ViewPagoTitle_idPago}"/>
+                    <h:outputText value="#{bundle.ViewPagoLabel_idCuenta}"/>
+                    <h:outputText value="#{pagoController.selected.idCuenta}" title="#{bundle.ViewPagoTitle_idCuenta}"/>
+                    <h:outputText value="#{bundle.ViewPagoLabel_tipo}"/>
+                    <h:outputText value="#{pagoController.selected.tipo}" title="#{bundle.ViewPagoTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewPagoLabel_descripcion}"/>
+                    <h:outputText value="#{pagoController.selected.descripcion}" title="#{bundle.ViewPagoTitle_descripcion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pagoController.destroyAndView}" value="#{bundle.ViewPagoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPagoEditLink}"/>
+                <br />
+                <h:commandLink action="#{pagoController.prepareCreate}" value="#{bundle.ViewPagoCreateLink}" />
+                <br />
+                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.ViewPagoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPagoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditContabilidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditContabilidadLabel_idContabilidad}" for="idContabilidad" />
+                    <h:inputText id="idContabilidad" value="#{contabilidadController.selected.idContabilidad}" title="#{bundle.EditContabilidadTitle_idContabilidad}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_idContabilidad}"/>
+                    <h:outputLabel value="#{bundle.EditContabilidadLabel_montoTotal}" for="montoTotal" />
+                    <h:inputText id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.EditContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_montoTotal}"/>
+                    <h:outputLabel value="#{bundle.EditContabilidadLabel_fechaPago}" for="fechaPago" />
+                    <h:inputText id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.EditContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_fechaPago}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditContabilidadLabel_idVenta}" for="idVenta" />
+                    <h:selectOneMenu id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.EditContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_idVenta}">
+                        <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{contabilidadController.update}" value="#{bundle.EditContabilidadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditContabilidadViewLink}"/>
+                <br />
+                <h:commandLink action="#{contabilidadController.prepareList}" value="#{bundle.EditContabilidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditContabilidadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

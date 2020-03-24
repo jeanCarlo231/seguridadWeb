@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewContabilidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewContabilidadLabel_idContabilidad}"/>
+                    <h:outputText value="#{contabilidadController.selected.idContabilidad}" title="#{bundle.ViewContabilidadTitle_idContabilidad}"/>
+                    <h:outputText value="#{bundle.ViewContabilidadLabel_montoTotal}"/>
+                    <h:outputText value="#{contabilidadController.selected.montoTotal}" title="#{bundle.ViewContabilidadTitle_montoTotal}"/>
+                    <h:outputText value="#{bundle.ViewContabilidadLabel_fechaPago}"/>
+                    <h:outputText value="#{contabilidadController.selected.fechaPago}" title="#{bundle.ViewContabilidadTitle_fechaPago}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewContabilidadLabel_idVenta}"/>
+                    <h:outputText value="#{contabilidadController.selected.idVenta}" title="#{bundle.ViewContabilidadTitle_idVenta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contabilidadController.destroyAndView}" value="#{bundle.ViewContabilidadDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewContabilidadEditLink}"/>
+                <br />
+                <h:commandLink action="#{contabilidadController.prepareCreate}" value="#{bundle.ViewContabilidadCreateLink}" />
+                <br />
+                <h:commandLink action="#{contabilidadController.prepareList}" value="#{bundle.ViewContabilidadShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewContabilidadIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

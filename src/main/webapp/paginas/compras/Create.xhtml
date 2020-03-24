@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateComprasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idCompras}" for="idCompras" />
+                    <h:inputText id="idCompras" value="#{comprasController.selected.idCompras}" title="#{bundle.CreateComprasTitle_idCompras}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idCompras}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{comprasController.selected.cantidad}" title="#{bundle.CreateComprasTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_precioCompra}" for="precioCompra" />
+                    <h:inputText id="precioCompra" value="#{comprasController.selected.precioCompra}" title="#{bundle.CreateComprasTitle_precioCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioCompra}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_precioVenta}" for="precioVenta" />
+                    <h:inputText id="precioVenta" value="#{comprasController.selected.precioVenta}" title="#{bundle.CreateComprasTitle_precioVenta}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioVenta}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_statusCompra}" for="statusCompra" />
+                    <h:inputText id="statusCompra" value="#{comprasController.selected.statusCompra}" title="#{bundle.CreateComprasTitle_statusCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_statusCompra}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{comprasController.selected.fecha}" title="#{bundle.CreateComprasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_iva}" for="iva" />
+                    <h:inputText id="iva" value="#{comprasController.selected.iva}" title="#{bundle.CreateComprasTitle_iva}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_iva}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_subtotal}" for="subtotal" />
+                    <h:inputText id="subtotal" value="#{comprasController.selected.subtotal}" title="#{bundle.CreateComprasTitle_subtotal}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_subtotal}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{comprasController.selected.total}" title="#{bundle.CreateComprasTitle_total}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_total}"/>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idEmpleado}" for="idEmpleado" />
+                    <h:selectOneMenu id="idEmpleado" value="#{comprasController.selected.idEmpleado}" title="#{bundle.CreateComprasTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idEmpleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idFactura}" for="idFactura" />
+                    <h:selectOneMenu id="idFactura" value="#{comprasController.selected.idFactura}" title="#{bundle.CreateComprasTitle_idFactura}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idFactura}">
+                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idPago}" for="idPago" />
+                    <h:selectOneMenu id="idPago" value="#{comprasController.selected.idPago}" title="#{bundle.CreateComprasTitle_idPago}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idPago}">
+                        <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idProducto}" for="idProducto" />
+                    <h:selectOneMenu id="idProducto" value="#{comprasController.selected.idProducto}" title="#{bundle.CreateComprasTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idProducto}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComprasLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{comprasController.selected.idProveedor}" title="#{bundle.CreateComprasTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{comprasController.create}" value="#{bundle.CreateComprasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{comprasController.prepareList}" value="#{bundle.CreateComprasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateComprasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

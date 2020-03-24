@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPagoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPagoLabel_idPago}" for="idPago" />
+                    <h:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.EditPagoTitle_idPago}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idPago}"/>
+                    <h:outputLabel value="#{bundle.EditPagoLabel_idCuenta}" for="idCuenta" />
+                    <h:inputText id="idCuenta" value="#{pagoController.selected.idCuenta}" title="#{bundle.EditPagoTitle_idCuenta}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idCuenta}"/>
+                    <h:outputLabel value="#{bundle.EditPagoLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{pagoController.selected.tipo}" title="#{bundle.EditPagoTitle_tipo}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.EditPagoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{pagoController.selected.descripcion}" title="#{bundle.EditPagoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_descripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{pagoController.update}" value="#{bundle.EditPagoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPagoViewLink}"/>
+                <br />
+                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.EditPagoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPagoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

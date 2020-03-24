@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditInventarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_idInventario}" for="idInventario" />
+                    <h:inputText id="idInventario" value="#{inventarioController.selected.idInventario}" title="#{bundle.EditInventarioTitle_idInventario}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_idInventario}"/>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{inventarioController.selected.status}" title="#{bundle.EditInventarioTitle_status}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_status}"/>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{inventarioController.selected.cantidad}" title="#{bundle.EditInventarioTitle_cantidad}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_costoPagadoProductos}" for="costoPagadoProductos" />
+                    <h:inputText id="costoPagadoProductos" value="#{inventarioController.selected.costoPagadoProductos}" title="#{bundle.EditInventarioTitle_costoPagadoProductos}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_costoPagadoProductos}"/>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_idAlmacen}" for="idAlmacen" />
+                    <h:selectOneMenu id="idAlmacen" value="#{inventarioController.selected.idAlmacen}" title="#{bundle.EditInventarioTitle_idAlmacen}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_idAlmacen}">
+                        <f:selectItems value="#{almacenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_idProducto}" for="idProducto" />
+                    <h:selectOneMenu id="idProducto" value="#{inventarioController.selected.idProducto}" title="#{bundle.EditInventarioTitle_idProducto}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_idProducto}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInventarioLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{inventarioController.selected.idProveedor}" title="#{bundle.EditInventarioTitle_idProveedor}" required="true" requiredMessage="#{bundle.EditInventarioRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{inventarioController.update}" value="#{bundle.EditInventarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditInventarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{inventarioController.prepareList}" value="#{bundle.EditInventarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditInventarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
