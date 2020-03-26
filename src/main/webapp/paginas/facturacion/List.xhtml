@@ -10,6 +10,7 @@
             <h:outputText value="#{bundle.ListFacturacionTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div class="main">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -70,6 +71,7 @@
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListFacturacionIndexLink}"/>
             </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

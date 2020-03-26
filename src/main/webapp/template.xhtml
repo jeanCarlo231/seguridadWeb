@@ -5,22 +5,54 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title><ui:insert name="title">Proveedores</ui:insert></title>
         <h:outputScript name="bootstrap/js/bootstrap.js" />
         <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
         <h:outputStylesheet name="bootstrap/css/bootstrap.css"/>
         <h:outputScript name="bootstrap/js/jquery.js"/>
-        
+        <h:outputStylesheet name="css/menu.css"/>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f7a229cef3.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>    
     </h:head>
 
     <h:body>
         <h1>
-            <ui:insert name="title">Default Title</ui:insert>
+            <ui:insert name="menu">
+                <div class="sidebar " style="color: white" >
+                    <a><h:link class="fas fa-fw fa-bars" outcome="/index.xhtml" value="Principal"/></a> 
+                    <a><h:link class="fas fa-database" outcome="/paginas/almacen/List" value=" Almacen"/></a> 
+                    <a><h:link class="fas fa-adjust" outcome="/paginas/categoria/List" value=" Categorias"/></a> 
+                    <a><h:link class="fas fa-user-friends" outcome="/paginas/cliente/List" value=" Clientes"/></a> 
+                    <a><h:link class="fas fa-cart-arrow-down" outcome="/paginas/compras/List" value=" Compras"/></a> 
+                    <a><h:link class="fas fa-money-bill" outcome="/paginas/contabilidad/List" value=" Contabilidad"/></a> 
+                    <a><h:link class="fas fa-university" outcome="/paginas/cuentaBancaria/List" value=" Cuentas Bancarias"/></a> 
+                    <a><h:link class="fas fa-briefcase" outcome="/paginas/empleado/List" value=" Empleados"/></a> 
+                    <a><h:link class="fas fa-file" outcome="/paginas/facturacion/List" value=" Facturas"/></a> 
+                    <a><h:link class="fas fa-warehouse" outcome="/paginas/inventario/List" value=" Inventario"/></a> 
+                    <a><h:link class="fas fa-money-bill-alt" outcome="/paginas/pago/List" value=" Pagos"/></a> 
+                    <a><h:link class="fas fa-apple-alt" outcome="/paginas/producto/List" value=" Productos"/></a> 
+                    <a><h:link class="fas fa-truck" outcome="/paginas/proveedor/List" value=" Proveedores"/></a> 
+                    <a><h:link class="fas fa-building" outcome="/paginas/ventas/List" value=" Ventas"/></a> 
+                    <a><h:link class="fas fa-tasks" outcome="/paginas/rol/List" value=" Roles"/></a> 
+                    <a><h:link class="fas fa-user" outcome="/paginas/usuario/List" value=" Usuarios"/></a> 
+                    <a><h:link class="fas fa-user"  value=" Graficas"/></a> 
+                </div>
+            </ui:insert>
         </h1>
-        <p>
-            <ui:insert name="body">Default Body</ui:insert>
-        </p>
+
+        <ui:insert name="body">
+            <div class="main">
+                <h2>Sidebar with Icons</h2>
+                <p>This side navigation is of full height (100%) and always shown.</p>
+                <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+            </div>
+        </ui:insert>
+
     </h:body>
 
 </html>

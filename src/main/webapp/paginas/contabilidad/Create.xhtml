@@ -10,6 +10,7 @@
             <h:outputText value="#{bundle.CreateContabilidadTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div class="main">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
@@ -37,6 +38,7 @@
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreateContabilidadIndexLink}"/>
             </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

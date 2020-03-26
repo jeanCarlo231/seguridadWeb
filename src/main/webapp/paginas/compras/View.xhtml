@@ -10,6 +10,7 @@
             <h:outputText value="#{bundle.ViewComprasTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <div class="main">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
@@ -58,8 +59,8 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ViewComprasIndexLink}"/>
-
             </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 
