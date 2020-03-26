@@ -33,7 +33,7 @@
                             <div class="card-body">
 
                                 <p align="right">
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                    <button action="#{rolController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
                                         Nuevo Rol
                                     </button>
                                 </p>
@@ -58,7 +58,7 @@
                                         </f:facet>
                                         <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{rolController.prepareView}" />
 
-                                        <button type="button" class="btn btn-sm btn-outline-success far fa-edit" data-toggle="modal" data-target="#modalEdit">
+                                        <button  type="button" class="btn btn-sm btn-outline-success far fa-edit" data-toggle="modal" data-target="#modalEdit">
 
                                         </button>
 
@@ -91,10 +91,10 @@
                                     <h:panelGrid columns="2">
 
                                         <h:outputLabel value="#{bundle.CreateRolLabel_nombre}" for="nombre" />
-                                        <h:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.CreateRolTitle_nombre}" required="true" requiredMessage="El campo nombre es obligatorio"/>
+                                        <h:inputText class="form-control" id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.CreateRolTitle_nombre}" required="true" requiredMessage="El campo nombre es obligatorio"/>
                                     </h:panelGrid>
                                     <br />
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{rolController.create}"/>
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{rolController.create}" />
                                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
                                     <br></br>
                                     <br></br>
@@ -126,21 +126,26 @@
                         <div class="modal-body">
 
                             <h:form>
+                                <div align="center" >
                                 <h:panelGrid columns="2">
-                                    <h:outputLabel value="#{bundle.EditRolLabel_idRol}" for="idRol" />
-                                    <h:inputText id="idRol" value="#{rolController.selected.idRol}" title="#{bundle.EditRolTitle_idRol}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_idRol}"/>
+                                    <h:outputLabel value="Id Rol:" for="idRol" />
+                                    <h:inputText class="form-control" id="idRol" value="#{rolController.selected.idRol}" title="#{bundle.EditRolTitle_idRol}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_idRol}"/>
                                     <h:outputLabel value="#{bundle.EditRolLabel_nombre}" for="nombre" />
-                                    <h:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.EditRolTitle_nombre}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_nombre}"/>
+                                    <h:inputText class="form-control" id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.EditRolTitle_nombre}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_nombre}"/>
                                 </h:panelGrid>
-                                <h:commandLink action="#{rolController.update}" value="#{bundle.EditRolSaveLink}"/>
+                                <br />
+                                <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{rolController.update}" />
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                
                                 <br />
                                 <br />
-                                <h:link outcome="View" value="#{bundle.EditRolViewLink}"/>
-                                <br />
-                                <h:commandLink action="#{rolController.prepareList}" value="#{bundle.EditRolShowAllLink}" immediate="true"/>
-                                <br />
-                                <br />
-                                <h:link outcome="/index" value="#{bundle.EditRolIndexLink}" />
+ 
+                                </div>
+                               
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{rolController.prepareList}" value="Ver Lista de Roles" immediate="true"/>
+                                    </div>
                             </h:form>
 
                         </div>
