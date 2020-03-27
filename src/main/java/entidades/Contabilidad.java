@@ -124,5 +124,5 @@ public class Contabilidad implements Serializable {
     public String toString() {
         return "entidades.Contabilidad[ idContabilidad=" + idContabilidad + " ]";
     }
-    
+
 }

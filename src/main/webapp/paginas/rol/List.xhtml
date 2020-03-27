@@ -59,11 +59,7 @@
                                     <h:outputText value="Acciones"/>
                                 </f:facet>
                                 <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{rolController.prepareView}" />
-
-                                <button  type="button" class="btn btn-sm btn-outline-success far fa-edit" data-toggle="modal" data-target="#modalEdit" />
-
-
-                                <h:outputText value=" "/>
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{rolController.prepareEdit}" />
                                 <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{rolController.destroy}"/>
                             </h:column>
                         </h:dataTable>
@@ -95,7 +91,7 @@
                                     </h:panelGrid>
                                     <br />
                                     <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{rolController.create}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
                                     <br></br>
                                     <br></br>
                                     <!-- Modal footer -->
@@ -109,50 +105,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- The Modal -->
-            <div class="modal fade" id="modalEdit">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header" align="center">
-                            <h4 class="modal-title">Editar rol</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-
-                            <h:form>
-                                <div align="center" >
-                                    <h:panelGrid columns="2">
-                                        <h:outputLabel value="Id Rol:" for="idRol" />
-                                        <h:inputText class="form-control" id="idRol" value="#{rolController.selected.idRol}" title="#{bundle.EditRolTitle_idRol}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_idRol}"/>
-                                        <h:outputLabel value="#{bundle.EditRolLabel_nombre}" for="nombre" />
-                                        <h:inputText class="form-control" id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.EditRolTitle_nombre}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_nombre}"/>
-                                    </h:panelGrid>
-                                    <br />
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{rolController.update}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
-
-                                    <br />
-                                    <br />
-
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <h:commandLink action="#{rolController.prepareList}" value="Ver Lista de Roles" immediate="true"/>
-                                </div>
-                            </h:form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </ui:define>
     </ui:composition>
 

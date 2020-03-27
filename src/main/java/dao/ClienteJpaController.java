@@ -223,5 +223,5 @@ public class ClienteJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

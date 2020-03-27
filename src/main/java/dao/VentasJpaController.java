@@ -339,5 +339,5 @@ public class VentasJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

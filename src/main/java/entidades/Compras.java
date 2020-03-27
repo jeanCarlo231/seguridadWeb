@@ -254,5 +254,5 @@ public class Compras implements Serializable {
     public String toString() {
         return "entidades.Compras[ idCompras=" + idCompras + " ]";
     }
-    
+
 }

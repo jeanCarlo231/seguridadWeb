@@ -148,5 +148,5 @@ public class Facturacion implements Serializable {
     public String toString() {
         return "entidades.Facturacion[ idFacturacion=" + idFacturacion + " ]";
     }
-    
+
 }

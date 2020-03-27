@@ -28,5 +28,5 @@ public class InventarioFacade extends AbstractFacade<Inventario> {
     public InventarioFacade() {
         super(Inventario.class);
     }
-    
+
 }

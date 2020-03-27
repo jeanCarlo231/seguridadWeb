@@ -216,5 +216,5 @@ public class Proveedor implements Serializable {
     public String toString() {
         return "entidades.Proveedor[ idProveedor=" + idProveedor + " ]";
     }
-    
+
 }

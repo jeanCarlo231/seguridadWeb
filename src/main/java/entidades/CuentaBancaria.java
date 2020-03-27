@@ -140,5 +140,5 @@ public class CuentaBancaria implements Serializable {
     public String toString() {
         return "entidades.CuentaBancaria[ idCuenta=" + idCuenta + " ]";
     }
-    
+
 }

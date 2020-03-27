@@ -146,5 +146,5 @@ public class Pago implements Serializable {
     public String toString() {
         return "entidades.Pago[ idPago=" + idPago + " ]";
     }
-    
+
 }

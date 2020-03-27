@@ -79,19 +79,14 @@
                                     <h:outputText value="Acciones"/>
                                 </f:facet>
                                 <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{usuarioController.prepareView}"/>
-                                <button  type="button" class="btn btn-sm btn-outline-success far fa-edit" data-toggle="modal" data-target="#modalEdit" />
-
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{usuarioController.prepareEdit}" />
                                 <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{usuarioController.destroy}"/>
 
                             </h:column>
                         </h:dataTable>
 
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{usuarioController.prepareCreate}" value="#{bundle.ListUsuarioCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListUsuarioIndexLink}"/>
+                   
                 </h:form>
             </div>
 
@@ -129,7 +124,7 @@
                                     </h:panelGrid>
                                     <br></br>
                                     <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{usuarioController.create}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
                                     <br></br>
                                     <br></br>
                                     <!-- Modal footer -->
@@ -142,57 +137,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-            <!-- The Modal -->
-            <div class="modal fade" id="modalEdit">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header" align="center">
-                            <h4 class="modal-title">Editar usuario</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-
-                            <h:form>
-                                <div align="center" >
-                                <h:panelGrid columns="2">
-                                    <h:outputLabel  value="#{bundle.EditUsuarioLabel_idUsuario}" for="idUsuario" />
-                                    <h:inputText class="form-control" id="idUsuario" value="#{usuarioController.selected.idUsuario}" title="#{bundle.EditUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idUsuario}"/>
-                                    <h:outputLabel value="#{bundle.EditUsuarioLabel_usuario}" for="usuario" />
-                                    <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.EditUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuario}"/>
-                                    <h:outputLabel value="#{bundle.EditUsuarioLabel_contraseña}" for="contraseña" />
-                                    <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.EditUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_contraseña}"/>
-                                    <h:outputLabel value="#{bundle.EditUsuarioLabel_activo}" for="activo" />
-                                    <h:inputText class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.EditUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_activo}"/>
-                                    <h:outputLabel value="#{bundle.EditUsuarioLabel_idRol}" for="idRol" />
-                                    <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.EditUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idRol}">
-                                        <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
-                                    </h:selectOneMenu>
-                                </h:panelGrid>
-                                    <br />
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{usuarioController.update}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
-                                    <br></br>
-                                    <br></br>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <h:commandLink action="#{usuarioController.prepareList}" value="Ver Lista de Usuarios" immediate="true"/>
-                                </div>
-                               </div>
-                            </h:form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </ui:define>
     </ui:composition>
 

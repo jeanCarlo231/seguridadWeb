@@ -252,5 +252,5 @@ public class CategoriaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

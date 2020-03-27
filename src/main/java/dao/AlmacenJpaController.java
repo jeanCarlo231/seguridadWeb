@@ -252,5 +252,5 @@ public class AlmacenJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -28,5 +28,5 @@ public class PagoFacade extends AbstractFacade<Pago> {
     public PagoFacade() {
         super(Pago.class);
     }
-    
+
 }

@@ -120,5 +120,5 @@ public class Categoria implements Serializable {
     public String toString() {
         return "entidades.Categoria[ idCategoria=" + idCategoria + " ]";
     }
-    
+
 }

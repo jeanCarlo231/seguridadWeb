@@ -169,5 +169,5 @@ public class Inventario implements Serializable {
     public String toString() {
         return "entidades.Inventario[ idInventario=" + idInventario + " ]";
     }
-    
+
 }

@@ -187,5 +187,5 @@ public class ContabilidadJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

@@ -303,5 +303,5 @@ public class ComprasJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

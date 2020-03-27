@@ -256,5 +256,5 @@ public class Empleado implements Serializable {
     public String toString() {
         return "entidades.Empleado[ idEmpleado=" + idEmpleado + " ]";
     }
-    
+
 }

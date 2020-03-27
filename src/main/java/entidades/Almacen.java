@@ -118,5 +118,5 @@ public class Almacen implements Serializable {
     public String toString() {
         return "entidades.Almacen[ idAlmacen=" + idAlmacen + " ]";
     }
-    
+
 }

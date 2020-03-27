@@ -310,5 +310,5 @@ public class InventarioJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
