@@ -76,7 +76,7 @@ public class AlmacenController implements Serializable {
     public String prepareCreate() {
         current = new Almacen();
         selectedItemIndex = -1;
-        return "Create";
+        return "List";
     }
 
     public String create() {
