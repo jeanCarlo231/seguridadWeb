@@ -14,30 +14,31 @@
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Información</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
                 <h:form>
                     <h:panelGrid columns="2">
                         <h:outputText value="#{bundle.ViewAlmacenLabel_idAlmacen}"/>
-                        <h:outputText value="#{almacenController.selected.idAlmacen}" title="#{bundle.ViewAlmacenTitle_idAlmacen}"/>
+                        <h:outputText class="form-control" value="#{almacenController.selected.idAlmacen}" title="#{bundle.ViewAlmacenTitle_idAlmacen}"/>
                         <h:outputText value="#{bundle.ViewAlmacenLabel_stock}"/>
-                        <h:outputText value="#{almacenController.selected.stock}" title="#{bundle.ViewAlmacenTitle_stock}"/>
+                        <h:outputText class="form-control" value="#{almacenController.selected.stock}" title="#{bundle.ViewAlmacenTitle_stock}"/>
                         <h:outputText value="#{bundle.ViewAlmacenLabel_idProveedor}"/>
-                        <h:outputText value="#{almacenController.selected.idProveedor}" title="#{bundle.ViewAlmacenTitle_idProveedor}"/>
+                        <h:outputText class="form-control" value="#{almacenController.selected.idProveedor}" title="#{bundle.ViewAlmacenTitle_idProveedor}"/>
                     </h:panelGrid>
-                    <br />
-                    <h:commandLink action="#{almacenController.destroyAndView}" value="#{bundle.ViewAlmacenDestroyLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="Edit" value="#{bundle.ViewAlmacenEditLink}"/>
-                    <br />
-                    <h:commandLink action="#{almacenController.prepareCreate}" value="#{bundle.ViewAlmacenCreateLink}" />
-                    <br />
-                    <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.ViewAlmacenShowAllLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ViewAlmacenIndexLink}"/>
-
+                        <br></br>
+                        <h:commandLink class="btn btn-sm btn-info" action="#{almacenController.prepareList}" value="Aceptar"/>
+                        <br></br>
+                        <br></br>
+                        
                 </h:form>
             </div>
+        </div>
         </ui:define>
     </ui:composition>
 

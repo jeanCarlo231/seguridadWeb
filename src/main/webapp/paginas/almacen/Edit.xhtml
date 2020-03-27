@@ -11,31 +11,40 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Editar Información del Almacen</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:form>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{bundle.EditAlmacenLabel_idAlmacen}" for="idAlmacen" />
-                        <h:inputText id="idAlmacen" value="#{almacenController.selected.idAlmacen}" title="#{bundle.EditAlmacenTitle_idAlmacen}" required="true" requiredMessage="#{bundle.EditAlmacenRequiredMessage_idAlmacen}"/>
+                        
                         <h:outputLabel value="#{bundle.EditAlmacenLabel_stock}" for="stock" />
-                        <h:inputText id="stock" value="#{almacenController.selected.stock}" title="#{bundle.EditAlmacenTitle_stock}" required="true" requiredMessage="#{bundle.EditAlmacenRequiredMessage_stock}"/>
+                        <h:inputText class="form-control" id="stock" value="#{almacenController.selected.stock}" title="#{bundle.EditAlmacenTitle_stock}" required="true" requiredMessage="#{bundle.EditAlmacenRequiredMessage_stock}"/>
                         <h:outputLabel value="#{bundle.EditAlmacenLabel_idProveedor}" for="idProveedor" />
-                        <h:selectOneMenu id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.EditAlmacenTitle_idProveedor}" >
+                        <h:selectOneMenu class="form-control" id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.EditAlmacenTitle_idProveedor}" >
                             <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                     </h:panelGrid>
-                    <h:commandLink action="#{almacenController.update}" value="#{bundle.EditAlmacenSaveLink}"/>
                     <br />
-                    <br />
-                    <h:link outcome="View" value="#{bundle.EditAlmacenViewLink}"/>
-                    <br />
-                    <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.EditAlmacenShowAllLink}" immediate="true"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.EditAlmacenIndexLink}" />
+                        <h:commandLink class="btn btn-sm btn-info" action="#{almacenController.update}" value="Aceptar"/>
+                        &nbsp; 
+                        <h:commandLink class="btn btn-sm btn-danger" action="#{almacenController.prepareList()}" value="Cancelar"/>
+                        <br />
+                        <br />
                 </h:form>
             </div>
+        </div>
         </ui:define>
     </ui:composition>
 
