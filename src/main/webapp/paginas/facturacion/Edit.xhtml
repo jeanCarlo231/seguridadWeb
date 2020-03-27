@@ -11,34 +11,40 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Editar Información del facturación</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
                 <h:form>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{bundle.EditFacturacionLabel_idFacturacion}" for="idFacturacion" />
-                        <h:inputText id="idFacturacion" value="#{facturacionController.selected.idFacturacion}" title="#{bundle.EditFacturacionTitle_idFacturacion}" required="true" requiredMessage="#{bundle.EditFacturacionRequiredMessage_idFacturacion}"/>
+                        
                         <h:outputLabel value="#{bundle.EditFacturacionLabel_nombre}" for="nombre" />
-                        <h:inputText id="nombre" value="#{facturacionController.selected.nombre}" title="#{bundle.EditFacturacionTitle_nombre}" />
+                        <h:inputText id="nombre" value="#{facturacionController.selected.nombre}" title="#{bundle.EditFacturacionTitle_nombre}" required="true"/>
                         <h:outputLabel value="#{bundle.EditFacturacionLabel_descripcion}" for="descripcion" />
-                        <h:inputText id="descripcion" value="#{facturacionController.selected.descripcion}" title="#{bundle.EditFacturacionTitle_descripcion}" />
+                        <h:inputText id="descripcion" value="#{facturacionController.selected.descripcion}" title="#{bundle.EditFacturacionTitle_descripcion}" required="true" />
                         <h:outputLabel value="#{bundle.EditFacturacionLabel_fecha}" for="fecha" />
-                        <h:inputText id="fecha" value="#{facturacionController.selected.fecha}" title="#{bundle.EditFacturacionTitle_fecha}" >
+                        <h:inputText id="fecha" value="#{facturacionController.selected.fecha}" title="#{bundle.EditFacturacionTitle_fecha}" required="true" >
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="#{bundle.EditFacturacionLabel_rfc}" for="rfc" />
-                        <h:inputText id="rfc" value="#{facturacionController.selected.rfc}" title="#{bundle.EditFacturacionTitle_rfc}" />
+                        <h:inputText id="rfc" value="#{facturacionController.selected.rfc}" title="#{bundle.EditFacturacionTitle_rfc}" required="true" />
                     </h:panelGrid>
-                    <h:commandLink action="#{facturacionController.update}" value="#{bundle.EditFacturacionSaveLink}"/>
                     <br />
-                    <br />
-                    <h:link outcome="View" value="#{bundle.EditFacturacionViewLink}"/>
-                    <br />
-                    <h:commandLink action="#{facturacionController.prepareList}" value="#{bundle.EditFacturacionShowAllLink}" immediate="true"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.EditFacturacionIndexLink}" />
+                        <h:commandLink class="btn btn-sm btn-info" action="#{facturacionController.update}" value="Aceptar"/>
+                        &nbsp; 
+                        <h:commandLink class="btn btn-sm btn-danger" action="#{facturacionController.prepareList()}" value="Cancelar"/>
+                        <br />
+                        <br />
                 </h:form>
+            </div>
             </div>
         </ui:define>
     </ui:composition>
