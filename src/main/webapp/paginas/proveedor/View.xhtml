@@ -11,41 +11,41 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewProveedorLabel_idProveedor}"/>
-                    <h:outputText value="#{proveedorController.selected.idProveedor}" title="#{bundle.ViewProveedorTitle_idProveedor}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_area}"/>
-                    <h:outputText value="#{proveedorController.selected.area}" title="#{bundle.ViewProveedorTitle_area}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_telefono}"/>
-                    <h:outputText value="#{proveedorController.selected.telefono}" title="#{bundle.ViewProveedorTitle_telefono}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_nombre}"/>
-                    <h:outputText value="#{proveedorController.selected.nombre}" title="#{bundle.ViewProveedorTitle_nombre}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_rfc}"/>
-                    <h:outputText value="#{proveedorController.selected.rfc}" title="#{bundle.ViewProveedorTitle_rfc}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_email}"/>
-                    <h:outputText value="#{proveedorController.selected.email}" title="#{bundle.ViewProveedorTitle_email}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_direccion}"/>
-                    <h:outputText value="#{proveedorController.selected.direccion}" title="#{bundle.ViewProveedorTitle_direccion}"/>
-                    <h:outputText value="#{bundle.ViewProveedorLabel_statusProveedor}"/>
-                    <h:outputText value="#{proveedorController.selected.statusProveedor}" title="#{bundle.ViewProveedorTitle_statusProveedor}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{proveedorController.destroyAndView}" value="#{bundle.ViewProveedorDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewProveedorEditLink}"/>
-                <br />
-                <h:commandLink action="#{proveedorController.prepareCreate}" value="#{bundle.ViewProveedorCreateLink}" />
-                <br />
-                <h:commandLink action="#{proveedorController.prepareList}" value="#{bundle.ViewProveedorShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewProveedorIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewProveedorLabel_idProveedor}"/>
+                        <h:outputText value="#{proveedorController.selected.idProveedor}" title="#{bundle.ViewProveedorTitle_idProveedor}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_area}"/>
+                        <h:outputText value="#{proveedorController.selected.area}" title="#{bundle.ViewProveedorTitle_area}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_telefono}"/>
+                        <h:outputText value="#{proveedorController.selected.telefono}" title="#{bundle.ViewProveedorTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_nombre}"/>
+                        <h:outputText value="#{proveedorController.selected.nombre}" title="#{bundle.ViewProveedorTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_rfc}"/>
+                        <h:outputText value="#{proveedorController.selected.rfc}" title="#{bundle.ViewProveedorTitle_rfc}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_email}"/>
+                        <h:outputText value="#{proveedorController.selected.email}" title="#{bundle.ViewProveedorTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_direccion}"/>
+                        <h:outputText value="#{proveedorController.selected.direccion}" title="#{bundle.ViewProveedorTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewProveedorLabel_statusProveedor}"/>
+                        <h:outputText value="#{proveedorController.selected.statusProveedor}" title="#{bundle.ViewProveedorTitle_statusProveedor}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{proveedorController.destroyAndView}" value="#{bundle.ViewProveedorDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewProveedorEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{proveedorController.prepareCreate}" value="#{bundle.ViewProveedorCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{proveedorController.prepareList}" value="#{bundle.ViewProveedorShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewProveedorIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

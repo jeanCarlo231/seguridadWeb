@@ -11,51 +11,51 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewVentasLabel_idVentas}"/>
-                    <h:outputText value="#{ventasController.selected.idVentas}" title="#{bundle.ViewVentasTitle_idVentas}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_fecha}"/>
-                    <h:outputText value="#{ventasController.selected.fecha}" title="#{bundle.ViewVentasTitle_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewVentasLabel_subtotal}"/>
-                    <h:outputText value="#{ventasController.selected.subtotal}" title="#{bundle.ViewVentasTitle_subtotal}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_iva}"/>
-                    <h:outputText value="#{ventasController.selected.iva}" title="#{bundle.ViewVentasTitle_iva}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_total}"/>
-                    <h:outputText value="#{ventasController.selected.total}" title="#{bundle.ViewVentasTitle_total}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_statusVenta}"/>
-                    <h:outputText value="#{ventasController.selected.statusVenta}" title="#{bundle.ViewVentasTitle_statusVenta}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_precio}"/>
-                    <h:outputText value="#{ventasController.selected.precio}" title="#{bundle.ViewVentasTitle_precio}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_cantidad}"/>
-                    <h:outputText value="#{ventasController.selected.cantidad}" title="#{bundle.ViewVentasTitle_cantidad}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_idCliente}"/>
-                    <h:outputText value="#{ventasController.selected.idCliente}" title="#{bundle.ViewVentasTitle_idCliente}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_idFactura}"/>
-                    <h:outputText value="#{ventasController.selected.idFactura}" title="#{bundle.ViewVentasTitle_idFactura}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_idPago}"/>
-                    <h:outputText value="#{ventasController.selected.idPago}" title="#{bundle.ViewVentasTitle_idPago}"/>
-                    <h:outputText value="#{bundle.ViewVentasLabel_idProducto}"/>
-                    <h:outputText value="#{ventasController.selected.idProducto}" title="#{bundle.ViewVentasTitle_idProducto}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{ventasController.destroyAndView}" value="#{bundle.ViewVentasDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewVentasEditLink}"/>
-                <br />
-                <h:commandLink action="#{ventasController.prepareCreate}" value="#{bundle.ViewVentasCreateLink}" />
-                <br />
-                <h:commandLink action="#{ventasController.prepareList}" value="#{bundle.ViewVentasShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewVentasIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewVentasLabel_idVentas}"/>
+                        <h:outputText value="#{ventasController.selected.idVentas}" title="#{bundle.ViewVentasTitle_idVentas}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_fecha}"/>
+                        <h:outputText value="#{ventasController.selected.fecha}" title="#{bundle.ViewVentasTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewVentasLabel_subtotal}"/>
+                        <h:outputText value="#{ventasController.selected.subtotal}" title="#{bundle.ViewVentasTitle_subtotal}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_iva}"/>
+                        <h:outputText value="#{ventasController.selected.iva}" title="#{bundle.ViewVentasTitle_iva}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_total}"/>
+                        <h:outputText value="#{ventasController.selected.total}" title="#{bundle.ViewVentasTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_statusVenta}"/>
+                        <h:outputText value="#{ventasController.selected.statusVenta}" title="#{bundle.ViewVentasTitle_statusVenta}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_precio}"/>
+                        <h:outputText value="#{ventasController.selected.precio}" title="#{bundle.ViewVentasTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_cantidad}"/>
+                        <h:outputText value="#{ventasController.selected.cantidad}" title="#{bundle.ViewVentasTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_idCliente}"/>
+                        <h:outputText value="#{ventasController.selected.idCliente}" title="#{bundle.ViewVentasTitle_idCliente}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_idFactura}"/>
+                        <h:outputText value="#{ventasController.selected.idFactura}" title="#{bundle.ViewVentasTitle_idFactura}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_idPago}"/>
+                        <h:outputText value="#{ventasController.selected.idPago}" title="#{bundle.ViewVentasTitle_idPago}"/>
+                        <h:outputText value="#{bundle.ViewVentasLabel_idProducto}"/>
+                        <h:outputText value="#{ventasController.selected.idProducto}" title="#{bundle.ViewVentasTitle_idProducto}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{ventasController.destroyAndView}" value="#{bundle.ViewVentasDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewVentasEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{ventasController.prepareCreate}" value="#{bundle.ViewVentasCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{ventasController.prepareList}" value="#{bundle.ViewVentasShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewVentasIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

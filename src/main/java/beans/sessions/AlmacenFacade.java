@@ -28,5 +28,5 @@ public class AlmacenFacade extends AbstractFacade<Almacen> {
     public AlmacenFacade() {
         super(Almacen.class);
     }
-    
+
 }

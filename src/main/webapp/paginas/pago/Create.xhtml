@@ -11,29 +11,29 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreatePagoLabel_idPago}" for="idPago" />
-                    <h:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.CreatePagoTitle_idPago}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idPago}"/>
-                    <h:outputLabel value="#{bundle.CreatePagoLabel_idCuenta}" for="idCuenta" />
-                    <h:inputText id="idCuenta" value="#{pagoController.selected.idCuenta}" title="#{bundle.CreatePagoTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idCuenta}"/>
-                    <h:outputLabel value="#{bundle.CreatePagoLabel_tipo}" for="tipo" />
-                    <h:inputText id="tipo" value="#{pagoController.selected.tipo}" title="#{bundle.CreatePagoTitle_tipo}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_tipo}"/>
-                    <h:outputLabel value="#{bundle.CreatePagoLabel_descripcion}" for="descripcion" />
-                    <h:inputText id="descripcion" value="#{pagoController.selected.descripcion}" title="#{bundle.CreatePagoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_descripcion}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{pagoController.create}" value="#{bundle.CreatePagoSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.CreatePagoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreatePagoIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreatePagoLabel_idPago}" for="idPago" />
+                        <h:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.CreatePagoTitle_idPago}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idPago}"/>
+                        <h:outputLabel value="#{bundle.CreatePagoLabel_idCuenta}" for="idCuenta" />
+                        <h:inputText id="idCuenta" value="#{pagoController.selected.idCuenta}" title="#{bundle.CreatePagoTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_idCuenta}"/>
+                        <h:outputLabel value="#{bundle.CreatePagoLabel_tipo}" for="tipo" />
+                        <h:inputText id="tipo" value="#{pagoController.selected.tipo}" title="#{bundle.CreatePagoTitle_tipo}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_tipo}"/>
+                        <h:outputLabel value="#{bundle.CreatePagoLabel_descripcion}" for="descripcion" />
+                        <h:inputText id="descripcion" value="#{pagoController.selected.descripcion}" title="#{bundle.CreatePagoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreatePagoRequiredMessage_descripcion}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{pagoController.create}" value="#{bundle.CreatePagoSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.CreatePagoShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreatePagoIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

@@ -11,50 +11,50 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_idEmpleado}" for="idEmpleado" />
-                    <h:inputText id="idEmpleado" value="#{empleadoController.selected.idEmpleado}" title="#{bundle.EditEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idEmpleado}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.EditEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombre}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_apellidoP}" for="apellidoP" />
-                    <h:inputText id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.EditEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoP}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_apellidoM}" for="apellidoM" />
-                    <h:inputText id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.EditEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoM}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_fechaNacimiento}" for="fechaNacimiento" />
-                    <h:inputText id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.EditEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fechaNacimiento}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_domicilio}" for="domicilio" />
-                    <h:inputText id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.EditEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_domicilio}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
-                    <h:inputText id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_telefono}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_correo}" for="correo" />
-                    <h:inputText id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.EditEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_correo}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_curp}" for="curp" />
-                    <h:inputText id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.EditEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_curp}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_rfc}" for="rfc" />
-                    <h:inputText id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.EditEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_rfc}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_edad}" for="edad" />
-                    <h:inputText id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.EditEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_edad}"/>
-                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_idUsuario}" for="idUsuario" />
-                    <h:selectOneMenu id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.EditEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idUsuario}">
-                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandLink action="#{empleadoController.update}" value="#{bundle.EditEmpleadoSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditEmpleadoViewLink}"/>
-                <br />
-                <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditEmpleadoIndexLink}" />
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_idEmpleado}" for="idEmpleado" />
+                        <h:inputText id="idEmpleado" value="#{empleadoController.selected.idEmpleado}" title="#{bundle.EditEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idEmpleado}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.EditEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_apellidoP}" for="apellidoP" />
+                        <h:inputText id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.EditEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoP}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_apellidoM}" for="apellidoM" />
+                        <h:inputText id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.EditEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoM}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <h:inputText id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.EditEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_domicilio}" for="domicilio" />
+                        <h:inputText id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.EditEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_domicilio}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
+                        <h:inputText id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_telefono}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_correo}" for="correo" />
+                        <h:inputText id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.EditEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_correo}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_curp}" for="curp" />
+                        <h:inputText id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.EditEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_curp}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_rfc}" for="rfc" />
+                        <h:inputText id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.EditEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_rfc}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_edad}" for="edad" />
+                        <h:inputText id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.EditEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_edad}"/>
+                        <h:outputLabel value="#{bundle.EditEmpleadoLabel_idUsuario}" for="idUsuario" />
+                        <h:selectOneMenu id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.EditEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idUsuario}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandLink action="#{empleadoController.update}" value="#{bundle.EditEmpleadoSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditEmpleadoViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.EditEmpleadoIndexLink}" />
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

@@ -10,8 +10,8 @@
             <h:outputText value="#{bundle.ListClienteTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-           <div class="main">
-               <div class="alert alert-dismissible" style="background-color: white">
+            <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </div>
@@ -32,94 +32,94 @@
                         </p>
                     </div>
                 </div>
-               
-                   
-            <h:form styleClass="jsfcrud_list_form">
-                <h:outputText escape="false" value="#{bundle.ListClienteEmpty}" rendered="#{clienteController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{clienteController.items.rowCount > 0}">
-                    <h:outputText value="#{clienteController.pagination.pageFirstItem + 1}..#{clienteController.pagination.pageLastItem + 1}/#{clienteController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{clienteController.previous}" value="#{bundle.Previous} #{clienteController.pagination.pageSize}" rendered="#{clienteController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{clienteController.next}" value="#{bundle.Next} #{clienteController.pagination.pageSize}" rendered="#{clienteController.pagination.hasNextPage}"/>&nbsp;
-                    
-                    
-                    <h:dataTable class="table table-sm table-light" value="#{clienteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idCliente}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_nombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nombre}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_rfc}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.rfc}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_estado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_municipio}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.municipio}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_calle}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.calle}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_numero}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.numero}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_cp}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cp}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_status}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.status}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClienteTitle_email}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.email}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Acciones"/>
-                            </f:facet>
-                            <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{clienteController.prepareView}" />
-                            <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{clienteController.prepareEdit}" />
-                            <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{clienteController.destroy}" />
-                        </h:column>
-                    </h:dataTable>
-                
-                </h:panelGroup>
-                
-            </h:form>
-           </div>
-            
-            
-            
+
+
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:outputText escape="false" value="#{bundle.ListClienteEmpty}" rendered="#{clienteController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{clienteController.items.rowCount > 0}">
+                        <h:outputText value="#{clienteController.pagination.pageFirstItem + 1}..#{clienteController.pagination.pageLastItem + 1}/#{clienteController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{clienteController.previous}" value="#{bundle.Previous} #{clienteController.pagination.pageSize}" rendered="#{clienteController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{clienteController.next}" value="#{bundle.Next} #{clienteController.pagination.pageSize}" rendered="#{clienteController.pagination.hasNextPage}"/>&nbsp;
+
+
+                        <h:dataTable class="table table-sm table-light" value="#{clienteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idCliente}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_nombre}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_rfc}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.rfc}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_estado}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estado}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_municipio}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.municipio}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_calle}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.calle}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_numero}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numero}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_cp}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.cp}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_status}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.status}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListClienteTitle_email}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Acciones"/>
+                                </f:facet>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{clienteController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{clienteController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{clienteController.destroy}" />
+                            </h:column>
+                        </h:dataTable>
+
+                    </h:panelGroup>
+
+                </h:form>
+            </div>
+
+
+
             <!-- The Modal -->
             <div class="modal fade" id="modalCreate">
                 <div class="modal-dialog">
@@ -140,33 +140,33 @@
                                     <h:panelGrid columns="2">
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_nombre}" for="nombre" />
                                         <h:inputText class="form-control" id="nombre" value="#{clienteController.selected.nombre}" title="#{bundle.CreateClienteTitle_nombre}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nombre}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_rfc}" for="rfc" />
                                         <h:inputText class="form-control" id="rfc" value="#{clienteController.selected.rfc}" title="#{bundle.CreateClienteTitle_rfc}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_rfc}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_estado}" for="estado" />
                                         <h:inputText class="form-control" id="estado" value="#{clienteController.selected.estado}" title="#{bundle.CreateClienteTitle_estado}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_estado}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_municipio}" for="municipio" />
                                         <h:inputText class="form-control" id="municipio" value="#{clienteController.selected.municipio}" title="#{bundle.CreateClienteTitle_municipio}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_municipio}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_calle}" for="calle" />
                                         <h:inputText class="form-control" id="calle" value="#{clienteController.selected.calle}" title="#{bundle.CreateClienteTitle_calle}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_calle}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_numero}" for="numero" />
                                         <h:inputText class="form-control" id="numero" value="#{clienteController.selected.numero}" title="#{bundle.CreateClienteTitle_numero}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_numero}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_cp}" for="cp" />
                                         <h:inputText class="form-control" id="cp" value="#{clienteController.selected.cp}" title="#{bundle.CreateClienteTitle_cp}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_cp}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_status}" for="status" />
                                         <h:inputText class="form-control" id="status" value="#{clienteController.selected.status}" title="#{bundle.CreateClienteTitle_status}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_status}"/>
-                                        
+
                                         <h:outputLabel value="#{bundle.CreateClienteLabel_email}" for="email" />
                                         <h:inputText class="form-control" id="email" value="#{clienteController.selected.email}" title="#{bundle.CreateClienteTitle_email}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_email}"/>
                                     </h:panelGrid>
-                                    
-                                   
+
+
                                     <br></br>
                                     <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{clienteController.create()}" />
                                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
@@ -182,7 +182,7 @@
                     </div>
                 </div>
             </div> 
-            
+
         </ui:define>
     </ui:composition>
 

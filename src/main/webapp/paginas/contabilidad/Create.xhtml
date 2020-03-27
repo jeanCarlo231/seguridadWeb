@@ -11,33 +11,33 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateContabilidadLabel_idContabilidad}" for="idContabilidad" />
-                    <h:inputText id="idContabilidad" value="#{contabilidadController.selected.idContabilidad}" title="#{bundle.CreateContabilidadTitle_idContabilidad}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idContabilidad}"/>
-                    <h:outputLabel value="#{bundle.CreateContabilidadLabel_montoTotal}" for="montoTotal" />
-                    <h:inputText id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.CreateContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_montoTotal}"/>
-                    <h:outputLabel value="#{bundle.CreateContabilidadLabel_fechaPago}" for="fechaPago" />
-                    <h:inputText id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateContabilidadLabel_idVenta}" for="idVenta" />
-                    <h:selectOneMenu id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.CreateContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idVenta}">
-                        <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{contabilidadController.create}" value="#{bundle.CreateContabilidadSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{contabilidadController.prepareList}" value="#{bundle.CreateContabilidadShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateContabilidadIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_idContabilidad}" for="idContabilidad" />
+                        <h:inputText id="idContabilidad" value="#{contabilidadController.selected.idContabilidad}" title="#{bundle.CreateContabilidadTitle_idContabilidad}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idContabilidad}"/>
+                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_montoTotal}" for="montoTotal" />
+                        <h:inputText id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.CreateContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_montoTotal}"/>
+                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_fechaPago}" for="fechaPago" />
+                        <h:inputText id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_idVenta}" for="idVenta" />
+                        <h:selectOneMenu id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.CreateContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idVenta}">
+                            <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{contabilidadController.create}" value="#{bundle.CreateContabilidadSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{contabilidadController.prepareList}" value="#{bundle.CreateContabilidadShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateContabilidadIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

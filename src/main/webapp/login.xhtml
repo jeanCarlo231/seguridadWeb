@@ -27,16 +27,16 @@
                 <!-- Login Form -->
                 <h:form> 
                     <h:inputText id="usuario" class="fadeIn second" value="#{login.usuario}" required="true"  requiredMessage="Ingresa un usuario valido" a:placeholder="Usuario"/>
-                   
-                         <h:messages class="alert alert-danger" for="usuario"/>
-                     
+
+                    <h:messages class="alert alert-danger" for="usuario"/>
+
                     <h:inputSecret class="fadeIn third" id="contrasenia" value="#{login.contrasenia}" required="true"  requiredMessage="Ingresa una contraseña" a:placeholder="Contraseña"/>
-                     
-                         <h:messages class="alert alert-danger" for="contrasenia"/>
-                    
+
+                    <h:messages class="alert alert-danger" for="contrasenia"/>
+
                     <h:commandButton value="Ingresar" action="#{login.entrar()}"/>
                 </h:form>
-                 
+
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
                     <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>

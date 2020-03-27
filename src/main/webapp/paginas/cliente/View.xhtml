@@ -10,11 +10,11 @@
             <h:outputText value="#{bundle.ViewClienteTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-           <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-               <div style="background-color: white">
+            <div class="main">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <div style="background-color: white">
                     <br></br>
                     <h4 align="center">Información</h4>
                     <br></br>
@@ -22,36 +22,36 @@
                 <br></br>
                 <div style="background-color: white" align="center">
                     <br></br>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewClienteLabel_idCliente}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.idCliente}" title="#{bundle.ViewClienteTitle_idCliente}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_nombre}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.nombre}" title="#{bundle.ViewClienteTitle_nombre}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_rfc}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.rfc}" title="#{bundle.ViewClienteTitle_rfc}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_estado}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.estado}" title="#{bundle.ViewClienteTitle_estado}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_municipio}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.municipio}" title="#{bundle.ViewClienteTitle_municipio}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_calle}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.calle}" title="#{bundle.ViewClienteTitle_calle}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_numero}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.numero}" title="#{bundle.ViewClienteTitle_numero}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_cp}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.cp}" title="#{bundle.ViewClienteTitle_cp}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_status}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.status}" title="#{bundle.ViewClienteTitle_status}"/>
-                    <h:outputText value="#{bundle.ViewClienteLabel_email}"/>
-                    <h:outputText class="form-control" value="#{clienteController.selected.email}" title="#{bundle.ViewClienteTitle_email}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink class="btn btn-sm btn-info" action="#{clienteController.prepareList}" value="Aceptar"/>
-                <br></br>
-                <br></br>
-            </h:form>
-           </div>
-        </div>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="#{bundle.ViewClienteLabel_idCliente}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.idCliente}" title="#{bundle.ViewClienteTitle_idCliente}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_nombre}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.nombre}" title="#{bundle.ViewClienteTitle_nombre}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_rfc}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.rfc}" title="#{bundle.ViewClienteTitle_rfc}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_estado}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.estado}" title="#{bundle.ViewClienteTitle_estado}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_municipio}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.municipio}" title="#{bundle.ViewClienteTitle_municipio}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_calle}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.calle}" title="#{bundle.ViewClienteTitle_calle}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_numero}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.numero}" title="#{bundle.ViewClienteTitle_numero}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_cp}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.cp}" title="#{bundle.ViewClienteTitle_cp}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_status}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.status}" title="#{bundle.ViewClienteTitle_status}"/>
+                            <h:outputText value="#{bundle.ViewClienteLabel_email}"/>
+                            <h:outputText class="form-control" value="#{clienteController.selected.email}" title="#{bundle.ViewClienteTitle_email}"/>
+                        </h:panelGrid>
+                        <br />
+                        <h:commandLink class="btn btn-sm btn-info" action="#{clienteController.prepareList}" value="Aceptar"/>
+                        <br></br>
+                        <br></br>
+                    </h:form>
+                </div>
+            </div>
         </ui:define>
     </ui:composition>
 

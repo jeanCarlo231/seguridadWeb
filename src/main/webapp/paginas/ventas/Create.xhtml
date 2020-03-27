@@ -11,55 +11,55 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_idVentas}" for="idVentas" />
-                    <h:inputText id="idVentas" value="#{ventasController.selected.idVentas}" title="#{bundle.CreateVentasTitle_idVentas}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idVentas}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_fecha}" for="fecha" />
-                    <h:inputText id="fecha" value="#{ventasController.selected.fecha}" title="#{bundle.CreateVentasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_subtotal}" for="subtotal" />
-                    <h:inputText id="subtotal" value="#{ventasController.selected.subtotal}" title="#{bundle.CreateVentasTitle_subtotal}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_subtotal}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_iva}" for="iva" />
-                    <h:inputText id="iva" value="#{ventasController.selected.iva}" title="#{bundle.CreateVentasTitle_iva}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_iva}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_total}" for="total" />
-                    <h:inputText id="total" value="#{ventasController.selected.total}" title="#{bundle.CreateVentasTitle_total}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_total}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_statusVenta}" for="statusVenta" />
-                    <h:inputText id="statusVenta" value="#{ventasController.selected.statusVenta}" title="#{bundle.CreateVentasTitle_statusVenta}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_statusVenta}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_precio}" for="precio" />
-                    <h:inputText id="precio" value="#{ventasController.selected.precio}" title="#{bundle.CreateVentasTitle_precio}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_precio}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_cantidad}" for="cantidad" />
-                    <h:inputText id="cantidad" value="#{ventasController.selected.cantidad}" title="#{bundle.CreateVentasTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_cantidad}"/>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_idCliente}" for="idCliente" />
-                    <h:selectOneMenu id="idCliente" value="#{ventasController.selected.idCliente}" title="#{bundle.CreateVentasTitle_idCliente}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idCliente}">
-                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_idFactura}" for="idFactura" />
-                    <h:selectOneMenu id="idFactura" value="#{ventasController.selected.idFactura}" title="#{bundle.CreateVentasTitle_idFactura}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idFactura}">
-                        <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_idPago}" for="idPago" />
-                    <h:selectOneMenu id="idPago" value="#{ventasController.selected.idPago}" title="#{bundle.CreateVentasTitle_idPago}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idPago}">
-                        <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateVentasLabel_idProducto}" for="idProducto" />
-                    <h:selectOneMenu id="idProducto" value="#{ventasController.selected.idProducto}" title="#{bundle.CreateVentasTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idProducto}">
-                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{ventasController.create}" value="#{bundle.CreateVentasSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{ventasController.prepareList}" value="#{bundle.CreateVentasShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateVentasIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_idVentas}" for="idVentas" />
+                        <h:inputText id="idVentas" value="#{ventasController.selected.idVentas}" title="#{bundle.CreateVentasTitle_idVentas}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idVentas}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_fecha}" for="fecha" />
+                        <h:inputText id="fecha" value="#{ventasController.selected.fecha}" title="#{bundle.CreateVentasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_subtotal}" for="subtotal" />
+                        <h:inputText id="subtotal" value="#{ventasController.selected.subtotal}" title="#{bundle.CreateVentasTitle_subtotal}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_subtotal}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_iva}" for="iva" />
+                        <h:inputText id="iva" value="#{ventasController.selected.iva}" title="#{bundle.CreateVentasTitle_iva}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_iva}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_total}" for="total" />
+                        <h:inputText id="total" value="#{ventasController.selected.total}" title="#{bundle.CreateVentasTitle_total}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_total}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_statusVenta}" for="statusVenta" />
+                        <h:inputText id="statusVenta" value="#{ventasController.selected.statusVenta}" title="#{bundle.CreateVentasTitle_statusVenta}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_statusVenta}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_precio}" for="precio" />
+                        <h:inputText id="precio" value="#{ventasController.selected.precio}" title="#{bundle.CreateVentasTitle_precio}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_precio}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_cantidad}" for="cantidad" />
+                        <h:inputText id="cantidad" value="#{ventasController.selected.cantidad}" title="#{bundle.CreateVentasTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_cantidad}"/>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_idCliente}" for="idCliente" />
+                        <h:selectOneMenu id="idCliente" value="#{ventasController.selected.idCliente}" title="#{bundle.CreateVentasTitle_idCliente}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idCliente}">
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_idFactura}" for="idFactura" />
+                        <h:selectOneMenu id="idFactura" value="#{ventasController.selected.idFactura}" title="#{bundle.CreateVentasTitle_idFactura}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idFactura}">
+                            <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_idPago}" for="idPago" />
+                        <h:selectOneMenu id="idPago" value="#{ventasController.selected.idPago}" title="#{bundle.CreateVentasTitle_idPago}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idPago}">
+                            <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="#{bundle.CreateVentasLabel_idProducto}" for="idProducto" />
+                        <h:selectOneMenu id="idProducto" value="#{ventasController.selected.idProducto}" title="#{bundle.CreateVentasTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateVentasRequiredMessage_idProducto}">
+                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{ventasController.create}" value="#{bundle.CreateVentasSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{ventasController.prepareList}" value="#{bundle.CreateVentasShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateVentasIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

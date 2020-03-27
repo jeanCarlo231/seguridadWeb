@@ -11,33 +11,33 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_idCuenta}" for="idCuenta" />
-                    <h:inputText id="idCuenta" value="#{cuentaBancariaController.selected.idCuenta}" title="#{bundle.CreateCuentaBancariaTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_idCuenta}"/>
-                    <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_nombreBanco}" for="nombreBanco" />
-                    <h:inputText id="nombreBanco" value="#{cuentaBancariaController.selected.nombreBanco}" title="#{bundle.CreateCuentaBancariaTitle_nombreBanco}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_nombreBanco}"/>
-                    <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_numeroTarjeta}" for="numeroTarjeta" />
-                    <h:inputText id="numeroTarjeta" value="#{cuentaBancariaController.selected.numeroTarjeta}" title="#{bundle.CreateCuentaBancariaTitle_numeroTarjeta}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_numeroTarjeta}"/>
-                    <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_cvc}" for="cvc" />
-                    <h:inputText id="cvc" value="#{cuentaBancariaController.selected.cvc}" title="#{bundle.CreateCuentaBancariaTitle_cvc}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_cvc}"/>
-                    <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_fechaExpiracion}" for="fechaExpiracion" />
-                    <h:inputText id="fechaExpiracion" value="#{cuentaBancariaController.selected.fechaExpiracion}" title="#{bundle.CreateCuentaBancariaTitle_fechaExpiracion}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_fechaExpiracion}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{cuentaBancariaController.create}" value="#{bundle.CreateCuentaBancariaSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{cuentaBancariaController.prepareList}" value="#{bundle.CreateCuentaBancariaShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateCuentaBancariaIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_idCuenta}" for="idCuenta" />
+                        <h:inputText id="idCuenta" value="#{cuentaBancariaController.selected.idCuenta}" title="#{bundle.CreateCuentaBancariaTitle_idCuenta}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_idCuenta}"/>
+                        <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_nombreBanco}" for="nombreBanco" />
+                        <h:inputText id="nombreBanco" value="#{cuentaBancariaController.selected.nombreBanco}" title="#{bundle.CreateCuentaBancariaTitle_nombreBanco}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_nombreBanco}"/>
+                        <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_numeroTarjeta}" for="numeroTarjeta" />
+                        <h:inputText id="numeroTarjeta" value="#{cuentaBancariaController.selected.numeroTarjeta}" title="#{bundle.CreateCuentaBancariaTitle_numeroTarjeta}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_numeroTarjeta}"/>
+                        <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_cvc}" for="cvc" />
+                        <h:inputText id="cvc" value="#{cuentaBancariaController.selected.cvc}" title="#{bundle.CreateCuentaBancariaTitle_cvc}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_cvc}"/>
+                        <h:outputLabel value="#{bundle.CreateCuentaBancariaLabel_fechaExpiracion}" for="fechaExpiracion" />
+                        <h:inputText id="fechaExpiracion" value="#{cuentaBancariaController.selected.fechaExpiracion}" title="#{bundle.CreateCuentaBancariaTitle_fechaExpiracion}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_fechaExpiracion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{cuentaBancariaController.create}" value="#{bundle.CreateCuentaBancariaSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{cuentaBancariaController.prepareList}" value="#{bundle.CreateCuentaBancariaShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateCuentaBancariaIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

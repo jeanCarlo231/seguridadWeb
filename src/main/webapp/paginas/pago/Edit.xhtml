@@ -11,30 +11,35 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditPagoLabel_idPago}" for="idPago" />
-                    <h:inputText id="idPago" value="#{pagoController.selected.idPago}" title="#{bundle.EditPagoTitle_idPago}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idPago}"/>
-                    <h:outputLabel value="#{bundle.EditPagoLabel_idCuenta}" for="idCuenta" />
-                    <h:inputText id="idCuenta" value="#{pagoController.selected.idCuenta}" title="#{bundle.EditPagoTitle_idCuenta}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idCuenta}"/>
-                    <h:outputLabel value="#{bundle.EditPagoLabel_tipo}" for="tipo" />
-                    <h:inputText id="tipo" value="#{pagoController.selected.tipo}" title="#{bundle.EditPagoTitle_tipo}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_tipo}"/>
-                    <h:outputLabel value="#{bundle.EditPagoLabel_descripcion}" for="descripcion" />
-                    <h:inputText id="descripcion" value="#{pagoController.selected.descripcion}" title="#{bundle.EditPagoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_descripcion}"/>
-                </h:panelGrid>
-                <h:commandLink action="#{pagoController.update}" value="#{bundle.EditPagoSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditPagoViewLink}"/>
-                <br />
-                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.EditPagoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditPagoIndexLink}" />
-            </h:form>
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Editar Información del pago</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Cuenta: " for="idCuenta" />
+                            <h:inputText class="form-control" id="idCuenta" value="#{pagoController.selected.idCuenta}" title="#{bundle.EditPagoTitle_idCuenta}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_idCuenta}"/>
+                            <h:outputLabel value="Tipo de Pago" for="tipo" />
+                            <h:inputText class="form-control" id="tipo" value="#{pagoController.selected.tipo}" title="#{bundle.EditPagoTitle_tipo}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_tipo}"/>
+                            <h:outputLabel value="#{bundle.EditPagoLabel_descripcion}" for="descripcion" />
+                            <h:inputText class="form-control" id="descripcion" value="#{pagoController.selected.descripcion}" title="#{bundle.EditPagoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditPagoRequiredMessage_descripcion}"/>
+                        </h:panelGrid>
+                        <br />
+                        <h:commandLink class="btn btn-sm btn-info" action="#{pagoController.update}" value="Aceptar"/>
+                        &nbsp; 
+                        <h:commandLink class="btn btn-sm btn-danger" action="#{pagoController.prepareList()}" value="Cancelar"/>
+                        <br />
+                        <br />
+                    </h:form>
+                </div>
             </div>
         </ui:define>
     </ui:composition>

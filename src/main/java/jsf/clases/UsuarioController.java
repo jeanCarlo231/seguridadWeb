@@ -82,7 +82,7 @@ public class UsuarioController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-             JsfUtil.addSuccessMessage("¡Usuario creado con exito!");
+            JsfUtil.addSuccessMessage("¡Usuario creado con exito!");
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");

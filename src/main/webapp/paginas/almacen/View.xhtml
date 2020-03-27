@@ -10,34 +10,34 @@
             <h:outputText value="#{bundle.ViewAlmacenTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-           <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAlmacenLabel_idAlmacen}"/>
-                    <h:outputText value="#{almacenController.selected.idAlmacen}" title="#{bundle.ViewAlmacenTitle_idAlmacen}"/>
-                    <h:outputText value="#{bundle.ViewAlmacenLabel_stock}"/>
-                    <h:outputText value="#{almacenController.selected.stock}" title="#{bundle.ViewAlmacenTitle_stock}"/>
-                    <h:outputText value="#{bundle.ViewAlmacenLabel_idProveedor}"/>
-                    <h:outputText value="#{almacenController.selected.idProveedor}" title="#{bundle.ViewAlmacenTitle_idProveedor}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{almacenController.destroyAndView}" value="#{bundle.ViewAlmacenDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAlmacenEditLink}"/>
-                <br />
-                <h:commandLink action="#{almacenController.prepareCreate}" value="#{bundle.ViewAlmacenCreateLink}" />
-                <br />
-                <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.ViewAlmacenShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAlmacenIndexLink}"/>
+            <div class="main">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewAlmacenLabel_idAlmacen}"/>
+                        <h:outputText value="#{almacenController.selected.idAlmacen}" title="#{bundle.ViewAlmacenTitle_idAlmacen}"/>
+                        <h:outputText value="#{bundle.ViewAlmacenLabel_stock}"/>
+                        <h:outputText value="#{almacenController.selected.stock}" title="#{bundle.ViewAlmacenTitle_stock}"/>
+                        <h:outputText value="#{bundle.ViewAlmacenLabel_idProveedor}"/>
+                        <h:outputText value="#{almacenController.selected.idProveedor}" title="#{bundle.ViewAlmacenTitle_idProveedor}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{almacenController.destroyAndView}" value="#{bundle.ViewAlmacenDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewAlmacenEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{almacenController.prepareCreate}" value="#{bundle.ViewAlmacenCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.ViewAlmacenShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewAlmacenIndexLink}"/>
 
-            </h:form>
-           </div>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

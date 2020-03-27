@@ -10,54 +10,54 @@
             <h:outputText value="#{bundle.ListAlmacenTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-           <div class="main">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListAlmacenEmpty}" rendered="#{almacenController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{almacenController.items.rowCount > 0}">
-                    <h:outputText value="#{almacenController.pagination.pageFirstItem + 1}..#{almacenController.pagination.pageLastItem + 1}/#{almacenController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{almacenController.previous}" value="#{bundle.Previous} #{almacenController.pagination.pageSize}" rendered="#{almacenController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{almacenController.next}" value="#{bundle.Next} #{almacenController.pagination.pageSize}" rendered="#{almacenController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{almacenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAlmacenTitle_idAlmacen}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idAlmacen}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAlmacenTitle_stock}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.stock}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAlmacenTitle_idProveedor}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idProveedor}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{almacenController.prepareView}" value="#{bundle.ListAlmacenViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{almacenController.prepareEdit}" value="#{bundle.ListAlmacenEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{almacenController.destroy}" value="#{bundle.ListAlmacenDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{almacenController.prepareCreate}" value="#{bundle.ListAlmacenCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListAlmacenIndexLink}"/>
-            </h:form>
-          </div>
+            <div class="main">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListAlmacenEmpty}" rendered="#{almacenController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{almacenController.items.rowCount > 0}">
+                        <h:outputText value="#{almacenController.pagination.pageFirstItem + 1}..#{almacenController.pagination.pageLastItem + 1}/#{almacenController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{almacenController.previous}" value="#{bundle.Previous} #{almacenController.pagination.pageSize}" rendered="#{almacenController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{almacenController.next}" value="#{bundle.Next} #{almacenController.pagination.pageSize}" rendered="#{almacenController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{almacenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAlmacenTitle_idAlmacen}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idAlmacen}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAlmacenTitle_stock}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.stock}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListAlmacenTitle_idProveedor}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idProveedor}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{almacenController.prepareView}" value="#{bundle.ListAlmacenViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{almacenController.prepareEdit}" value="#{bundle.ListAlmacenEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{almacenController.destroy}" value="#{bundle.ListAlmacenDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{almacenController.prepareCreate}" value="#{bundle.ListAlmacenCreateLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ListAlmacenIndexLink}"/>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

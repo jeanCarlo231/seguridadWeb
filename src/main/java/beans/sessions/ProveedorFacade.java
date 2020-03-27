@@ -28,5 +28,5 @@ public class ProveedorFacade extends AbstractFacade<Proveedor> {
     public ProveedorFacade() {
         super(Proveedor.class);
     }
-    
+
 }

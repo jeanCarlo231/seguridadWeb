@@ -11,33 +11,33 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_idUsuario}" for="idUsuario" />
-                    <h:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" title="#{bundle.CreateUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idUsuario}"/>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
-                    <h:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_contraseña}" for="contraseña" />
-                    <h:inputText id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_contraseña}"/>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
-                    <h:inputText id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_activo}"/>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_idRol}" for="idRol" />
-                    <h:selectOneMenu id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idRol}">
-                        <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{usuarioController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.CreateUsuarioShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateUsuarioIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_idUsuario}" for="idUsuario" />
+                        <h:inputText id="idUsuario" value="#{usuarioController.selected.idUsuario}" title="#{bundle.CreateUsuarioTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idUsuario}"/>
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
+                        <h:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_contraseña}" for="contraseña" />
+                        <h:inputText id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_contraseña}"/>
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
+                        <h:inputText id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_activo}"/>
+                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_idRol}" for="idRol" />
+                        <h:selectOneMenu id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idRol}">
+                            <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{usuarioController.create}" value="#{bundle.CreateUsuarioSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{usuarioController.prepareList}" value="#{bundle.CreateUsuarioShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateUsuarioIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

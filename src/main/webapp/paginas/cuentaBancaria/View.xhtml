@@ -11,37 +11,37 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewCuentaBancariaLabel_idCuenta}"/>
-                    <h:outputText value="#{cuentaBancariaController.selected.idCuenta}" title="#{bundle.ViewCuentaBancariaTitle_idCuenta}"/>
-                    <h:outputText value="#{bundle.ViewCuentaBancariaLabel_nombreBanco}"/>
-                    <h:outputText value="#{cuentaBancariaController.selected.nombreBanco}" title="#{bundle.ViewCuentaBancariaTitle_nombreBanco}"/>
-                    <h:outputText value="#{bundle.ViewCuentaBancariaLabel_numeroTarjeta}"/>
-                    <h:outputText value="#{cuentaBancariaController.selected.numeroTarjeta}" title="#{bundle.ViewCuentaBancariaTitle_numeroTarjeta}"/>
-                    <h:outputText value="#{bundle.ViewCuentaBancariaLabel_cvc}"/>
-                    <h:outputText value="#{cuentaBancariaController.selected.cvc}" title="#{bundle.ViewCuentaBancariaTitle_cvc}"/>
-                    <h:outputText value="#{bundle.ViewCuentaBancariaLabel_fechaExpiracion}"/>
-                    <h:outputText value="#{cuentaBancariaController.selected.fechaExpiracion}" title="#{bundle.ViewCuentaBancariaTitle_fechaExpiracion}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{cuentaBancariaController.destroyAndView}" value="#{bundle.ViewCuentaBancariaDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewCuentaBancariaEditLink}"/>
-                <br />
-                <h:commandLink action="#{cuentaBancariaController.prepareCreate}" value="#{bundle.ViewCuentaBancariaCreateLink}" />
-                <br />
-                <h:commandLink action="#{cuentaBancariaController.prepareList}" value="#{bundle.ViewCuentaBancariaShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewCuentaBancariaIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewCuentaBancariaLabel_idCuenta}"/>
+                        <h:outputText value="#{cuentaBancariaController.selected.idCuenta}" title="#{bundle.ViewCuentaBancariaTitle_idCuenta}"/>
+                        <h:outputText value="#{bundle.ViewCuentaBancariaLabel_nombreBanco}"/>
+                        <h:outputText value="#{cuentaBancariaController.selected.nombreBanco}" title="#{bundle.ViewCuentaBancariaTitle_nombreBanco}"/>
+                        <h:outputText value="#{bundle.ViewCuentaBancariaLabel_numeroTarjeta}"/>
+                        <h:outputText value="#{cuentaBancariaController.selected.numeroTarjeta}" title="#{bundle.ViewCuentaBancariaTitle_numeroTarjeta}"/>
+                        <h:outputText value="#{bundle.ViewCuentaBancariaLabel_cvc}"/>
+                        <h:outputText value="#{cuentaBancariaController.selected.cvc}" title="#{bundle.ViewCuentaBancariaTitle_cvc}"/>
+                        <h:outputText value="#{bundle.ViewCuentaBancariaLabel_fechaExpiracion}"/>
+                        <h:outputText value="#{cuentaBancariaController.selected.fechaExpiracion}" title="#{bundle.ViewCuentaBancariaTitle_fechaExpiracion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{cuentaBancariaController.destroyAndView}" value="#{bundle.ViewCuentaBancariaDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewCuentaBancariaEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{cuentaBancariaController.prepareCreate}" value="#{bundle.ViewCuentaBancariaCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{cuentaBancariaController.prepareList}" value="#{bundle.ViewCuentaBancariaShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewCuentaBancariaIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

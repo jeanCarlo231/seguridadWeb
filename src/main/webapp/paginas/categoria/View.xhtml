@@ -11,33 +11,33 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewCategoriaLabel_idCategoria}"/>
-                    <h:outputText value="#{categoriaController.selected.idCategoria}" title="#{bundle.ViewCategoriaTitle_idCategoria}"/>
-                    <h:outputText value="#{bundle.ViewCategoriaLabel_nombre}"/>
-                    <h:outputText value="#{categoriaController.selected.nombre}" title="#{bundle.ViewCategoriaTitle_nombre}"/>
-                    <h:outputText value="#{bundle.ViewCategoriaLabel_idInventario}"/>
-                    <h:outputText value="#{categoriaController.selected.idInventario}" title="#{bundle.ViewCategoriaTitle_idInventario}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{categoriaController.destroyAndView}" value="#{bundle.ViewCategoriaDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewCategoriaEditLink}"/>
-                <br />
-                <h:commandLink action="#{categoriaController.prepareCreate}" value="#{bundle.ViewCategoriaCreateLink}" />
-                <br />
-                <h:commandLink action="#{categoriaController.prepareList}" value="#{bundle.ViewCategoriaShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewCategoriaIndexLink}"/>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewCategoriaLabel_idCategoria}"/>
+                        <h:outputText value="#{categoriaController.selected.idCategoria}" title="#{bundle.ViewCategoriaTitle_idCategoria}"/>
+                        <h:outputText value="#{bundle.ViewCategoriaLabel_nombre}"/>
+                        <h:outputText value="#{categoriaController.selected.nombre}" title="#{bundle.ViewCategoriaTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewCategoriaLabel_idInventario}"/>
+                        <h:outputText value="#{categoriaController.selected.idInventario}" title="#{bundle.ViewCategoriaTitle_idInventario}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{categoriaController.destroyAndView}" value="#{bundle.ViewCategoriaDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewCategoriaEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{categoriaController.prepareCreate}" value="#{bundle.ViewCategoriaCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{categoriaController.prepareList}" value="#{bundle.ViewCategoriaShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewCategoriaIndexLink}"/>
 
-            </h:form>
-           </div>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

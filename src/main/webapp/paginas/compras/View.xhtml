@@ -11,55 +11,55 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewComprasLabel_idCompras}"/>
-                    <h:outputText value="#{comprasController.selected.idCompras}" title="#{bundle.ViewComprasTitle_idCompras}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_cantidad}"/>
-                    <h:outputText value="#{comprasController.selected.cantidad}" title="#{bundle.ViewComprasTitle_cantidad}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_precioCompra}"/>
-                    <h:outputText value="#{comprasController.selected.precioCompra}" title="#{bundle.ViewComprasTitle_precioCompra}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_precioVenta}"/>
-                    <h:outputText value="#{comprasController.selected.precioVenta}" title="#{bundle.ViewComprasTitle_precioVenta}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_statusCompra}"/>
-                    <h:outputText value="#{comprasController.selected.statusCompra}" title="#{bundle.ViewComprasTitle_statusCompra}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_fecha}"/>
-                    <h:outputText value="#{comprasController.selected.fecha}" title="#{bundle.ViewComprasTitle_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewComprasLabel_iva}"/>
-                    <h:outputText value="#{comprasController.selected.iva}" title="#{bundle.ViewComprasTitle_iva}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_subtotal}"/>
-                    <h:outputText value="#{comprasController.selected.subtotal}" title="#{bundle.ViewComprasTitle_subtotal}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_total}"/>
-                    <h:outputText value="#{comprasController.selected.total}" title="#{bundle.ViewComprasTitle_total}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_idEmpleado}"/>
-                    <h:outputText value="#{comprasController.selected.idEmpleado}" title="#{bundle.ViewComprasTitle_idEmpleado}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_idFactura}"/>
-                    <h:outputText value="#{comprasController.selected.idFactura}" title="#{bundle.ViewComprasTitle_idFactura}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_idPago}"/>
-                    <h:outputText value="#{comprasController.selected.idPago}" title="#{bundle.ViewComprasTitle_idPago}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_idProducto}"/>
-                    <h:outputText value="#{comprasController.selected.idProducto}" title="#{bundle.ViewComprasTitle_idProducto}"/>
-                    <h:outputText value="#{bundle.ViewComprasLabel_idProveedor}"/>
-                    <h:outputText value="#{comprasController.selected.idProveedor}" title="#{bundle.ViewComprasTitle_idProveedor}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{comprasController.destroyAndView}" value="#{bundle.ViewComprasDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewComprasEditLink}"/>
-                <br />
-                <h:commandLink action="#{comprasController.prepareCreate}" value="#{bundle.ViewComprasCreateLink}" />
-                <br />
-                <h:commandLink action="#{comprasController.prepareList}" value="#{bundle.ViewComprasShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewComprasIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewComprasLabel_idCompras}"/>
+                        <h:outputText value="#{comprasController.selected.idCompras}" title="#{bundle.ViewComprasTitle_idCompras}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_cantidad}"/>
+                        <h:outputText value="#{comprasController.selected.cantidad}" title="#{bundle.ViewComprasTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_precioCompra}"/>
+                        <h:outputText value="#{comprasController.selected.precioCompra}" title="#{bundle.ViewComprasTitle_precioCompra}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_precioVenta}"/>
+                        <h:outputText value="#{comprasController.selected.precioVenta}" title="#{bundle.ViewComprasTitle_precioVenta}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_statusCompra}"/>
+                        <h:outputText value="#{comprasController.selected.statusCompra}" title="#{bundle.ViewComprasTitle_statusCompra}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_fecha}"/>
+                        <h:outputText value="#{comprasController.selected.fecha}" title="#{bundle.ViewComprasTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewComprasLabel_iva}"/>
+                        <h:outputText value="#{comprasController.selected.iva}" title="#{bundle.ViewComprasTitle_iva}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_subtotal}"/>
+                        <h:outputText value="#{comprasController.selected.subtotal}" title="#{bundle.ViewComprasTitle_subtotal}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_total}"/>
+                        <h:outputText value="#{comprasController.selected.total}" title="#{bundle.ViewComprasTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_idEmpleado}"/>
+                        <h:outputText value="#{comprasController.selected.idEmpleado}" title="#{bundle.ViewComprasTitle_idEmpleado}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_idFactura}"/>
+                        <h:outputText value="#{comprasController.selected.idFactura}" title="#{bundle.ViewComprasTitle_idFactura}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_idPago}"/>
+                        <h:outputText value="#{comprasController.selected.idPago}" title="#{bundle.ViewComprasTitle_idPago}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_idProducto}"/>
+                        <h:outputText value="#{comprasController.selected.idProducto}" title="#{bundle.ViewComprasTitle_idProducto}"/>
+                        <h:outputText value="#{bundle.ViewComprasLabel_idProveedor}"/>
+                        <h:outputText value="#{comprasController.selected.idProveedor}" title="#{bundle.ViewComprasTitle_idProveedor}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{comprasController.destroyAndView}" value="#{bundle.ViewComprasDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewComprasEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{comprasController.prepareCreate}" value="#{bundle.ViewComprasCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{comprasController.prepareList}" value="#{bundle.ViewComprasShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewComprasIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

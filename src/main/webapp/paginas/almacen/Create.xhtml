@@ -10,31 +10,31 @@
             <h:outputText value="#{bundle.CreateAlmacenTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-           <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_idAlmacen}" for="idAlmacen" />
-                    <h:inputText id="idAlmacen" value="#{almacenController.selected.idAlmacen}" title="#{bundle.CreateAlmacenTitle_idAlmacen}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_idAlmacen}"/>
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_stock}" for="stock" />
-                    <h:inputText id="stock" value="#{almacenController.selected.stock}" title="#{bundle.CreateAlmacenTitle_stock}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_stock}"/>
-                    <h:outputLabel value="#{bundle.CreateAlmacenLabel_idProveedor}" for="idProveedor" />
-                    <h:selectOneMenu id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.CreateAlmacenTitle_idProveedor}" >
-                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{almacenController.create}" value="#{bundle.CreateAlmacenSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.CreateAlmacenShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAlmacenIndexLink}"/>
-            </h:form>
-           </div>
+            <div class="main">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateAlmacenLabel_idAlmacen}" for="idAlmacen" />
+                        <h:inputText id="idAlmacen" value="#{almacenController.selected.idAlmacen}" title="#{bundle.CreateAlmacenTitle_idAlmacen}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_idAlmacen}"/>
+                        <h:outputLabel value="#{bundle.CreateAlmacenLabel_stock}" for="stock" />
+                        <h:inputText id="stock" value="#{almacenController.selected.stock}" title="#{bundle.CreateAlmacenTitle_stock}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_stock}"/>
+                        <h:outputLabel value="#{bundle.CreateAlmacenLabel_idProveedor}" for="idProveedor" />
+                        <h:selectOneMenu id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.CreateAlmacenTitle_idProveedor}" >
+                            <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{almacenController.create}" value="#{bundle.CreateAlmacenSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{almacenController.prepareList}" value="#{bundle.CreateAlmacenShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateAlmacenIndexLink}"/>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

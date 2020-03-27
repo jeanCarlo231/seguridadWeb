@@ -11,25 +11,25 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateRolLabel_idRol}" for="idRol" />
-                    <h:inputText id="idRol" value="#{rolController.selected.idRol}" title="#{bundle.CreateRolTitle_idRol}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_idRol}"/>
-                    <h:outputLabel value="#{bundle.CreateRolLabel_nombre}" for="nombre" />
-                    <h:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.CreateRolTitle_nombre}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_nombre}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{rolController.create}" value="#{bundle.CreateRolSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{rolController.prepareList}" value="#{bundle.CreateRolShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateRolIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateRolLabel_idRol}" for="idRol" />
+                        <h:inputText id="idRol" value="#{rolController.selected.idRol}" title="#{bundle.CreateRolTitle_idRol}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_idRol}"/>
+                        <h:outputLabel value="#{bundle.CreateRolLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.CreateRolTitle_nombre}" required="true" requiredMessage="#{bundle.CreateRolRequiredMessage_nombre}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{rolController.create}" value="#{bundle.CreateRolSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{rolController.prepareList}" value="#{bundle.CreateRolShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateRolIndexLink}"/>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

@@ -11,33 +11,34 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewPagoLabel_idPago}"/>
-                    <h:outputText value="#{pagoController.selected.idPago}" title="#{bundle.ViewPagoTitle_idPago}"/>
-                    <h:outputText value="#{bundle.ViewPagoLabel_idCuenta}"/>
-                    <h:outputText value="#{pagoController.selected.idCuenta}" title="#{bundle.ViewPagoTitle_idCuenta}"/>
-                    <h:outputText value="#{bundle.ViewPagoLabel_tipo}"/>
-                    <h:outputText value="#{pagoController.selected.tipo}" title="#{bundle.ViewPagoTitle_tipo}"/>
-                    <h:outputText value="#{bundle.ViewPagoLabel_descripcion}"/>
-                    <h:outputText value="#{pagoController.selected.descripcion}" title="#{bundle.ViewPagoTitle_descripcion}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{pagoController.destroyAndView}" value="#{bundle.ViewPagoDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewPagoEditLink}"/>
-                <br />
-                <h:commandLink action="#{pagoController.prepareCreate}" value="#{bundle.ViewPagoCreateLink}" />
-                <br />
-                <h:commandLink action="#{pagoController.prepareList}" value="#{bundle.ViewPagoShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewPagoIndexLink}"/>
-            </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Información</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Id Pago: "/>
+                            <h:outputText class="form-control" value="#{pagoController.selected.idPago}" title="#{bundle.ViewPagoTitle_idPago}"/>
+                            <h:outputText value="Cuenta: "/>
+                            <h:outputText class="form-control" value="#{pagoController.selected.idCuenta}" title="#{bundle.ViewPagoTitle_idCuenta}"/>
+                            <h:outputText value="Tipo de Pago: "/>
+                            <h:outputText class="form-control" value="#{pagoController.selected.tipo}" title="#{bundle.ViewPagoTitle_tipo}"/>
+                            <h:outputText value="Descripción: "/>
+                            <h:outputText class="form-control" value="#{pagoController.selected.descripcion}" title="#{bundle.ViewPagoTitle_descripcion}"/>
+                        </h:panelGrid>
+                        <br />                     
+                        <h:commandLink class="btn btn-sm btn-info" action="#{pagoController.prepareList}" value="Aceptar"/>
+                        <br></br>
+                        <br></br>
+                    </h:form>
+                </div>
             </div>
         </ui:define>
     </ui:composition>

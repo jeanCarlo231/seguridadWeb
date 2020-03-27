@@ -11,9 +11,9 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
                 <div style="background-color: white">
                     <br></br>
                     <h4 align="center">Información</h4>
@@ -22,25 +22,25 @@
                 <br></br>
                 <div style="background-color: white" align="center">
                     <br></br>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="Id Usuario:"/>
-                    <h:outputText class="form-control" value="#{usuarioController.selected.idUsuario}" title="#{bundle.ViewUsuarioTitle_idUsuario}"/>
-                    <h:outputText value="#{bundle.ViewUsuarioLabel_usuario}"/>
-                    <h:outputText class="form-control" value="#{usuarioController.selected.usuario}" title="#{bundle.ViewUsuarioTitle_usuario}"/>
-                    <h:outputText value="#{bundle.ViewUsuarioLabel_contraseña}"/>
-                    <h:outputText class="form-control" value="#{usuarioController.selected.contraseña}" title="#{bundle.ViewUsuarioTitle_contraseña}"/>
-                    <h:outputText value="#{bundle.ViewUsuarioLabel_activo}"/>
-                    <h:outputText class="form-control" value="#{usuarioController.selected.activo}" title="#{bundle.ViewUsuarioTitle_activo}"/>
-                    <h:outputText value="Rol:"/>
-                    <h:outputText class="form-control" value="#{usuarioController.selected.idRol}" title="#{bundle.ViewUsuarioTitle_idRol}"/>
-                </h:panelGrid>
-                <br />
-                                  
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Id Usuario:"/>
+                            <h:outputText class="form-control" value="#{usuarioController.selected.idUsuario}" title="#{bundle.ViewUsuarioTitle_idUsuario}"/>
+                            <h:outputText value="#{bundle.ViewUsuarioLabel_usuario}"/>
+                            <h:outputText class="form-control" value="#{usuarioController.selected.usuario}" title="#{bundle.ViewUsuarioTitle_usuario}"/>
+                            <h:outputText value="#{bundle.ViewUsuarioLabel_contraseña}"/>
+                            <h:outputText class="form-control" value="#{usuarioController.selected.contraseña}" title="#{bundle.ViewUsuarioTitle_contraseña}"/>
+                            <h:outputText value="#{bundle.ViewUsuarioLabel_activo}"/>
+                            <h:outputText class="form-control" value="#{usuarioController.selected.activo}" title="#{bundle.ViewUsuarioTitle_activo}"/>
+                            <h:outputText value="Rol:"/>
+                            <h:outputText class="form-control" value="#{usuarioController.selected.idRol}" title="#{bundle.ViewUsuarioTitle_idRol}"/>
+                        </h:panelGrid>
+                        <br />
+
                         <h:commandLink class="btn btn-sm btn-info" action="#{usuarioController.prepareList}" value="Aceptar"/>
                         <br></br>
                         <br></br>
-            </h:form>
+                    </h:form>
                 </div>
             </div>
         </ui:define>
