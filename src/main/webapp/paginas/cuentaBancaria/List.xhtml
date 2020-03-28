@@ -11,43 +11,61 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+
+                <div style="background-color: white">
+                    <br></br>
+                    <h1 align="center">Cuentas Bancarias</h1>
+                    <br></br>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+
+                        <p align="right">
+                            <button action="#{cuentaBancaria.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                Nuevo Cuenta
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <br></br>
                 <h:form styleClass="jsfcrud_list_form">
-                    <h:panelGroup id="messagePanel" layout="block">
-                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                    </h:panelGroup>
                     <h:outputText escape="false" value="#{bundle.ListCuentaBancariaEmpty}" rendered="#{cuentaBancariaController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{cuentaBancariaController.items.rowCount > 0}">
                         <h:outputText value="#{cuentaBancariaController.pagination.pageFirstItem + 1}..#{cuentaBancariaController.pagination.pageLastItem + 1}/#{cuentaBancariaController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{cuentaBancariaController.previous}" value="#{bundle.Previous} #{cuentaBancariaController.pagination.pageSize}" rendered="#{cuentaBancariaController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{cuentaBancariaController.next}" value="#{bundle.Next} #{cuentaBancariaController.pagination.pageSize}" rendered="#{cuentaBancariaController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{cuentaBancariaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:dataTable class="table table-sm table-light" value="#{cuentaBancariaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListCuentaBancariaTitle_idCuenta}"/>
+                                    <h:outputText value="#"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idCuenta}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListCuentaBancariaTitle_nombreBanco}"/>
+                                    <h:outputText value="Banco"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nombreBanco}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListCuentaBancariaTitle_numeroTarjeta}"/>
+                                    <h:outputText value="Numero de Tarjeta"/>
                                 </f:facet>
                                 <h:outputText value="#{item.numeroTarjeta}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListCuentaBancariaTitle_cvc}"/>
+                                    <h:outputText value="CVC"/>
                                 </f:facet>
                                 <h:outputText value="#{item.cvc}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListCuentaBancariaTitle_fechaExpiracion}"/>
+                                    <h:outputText value="Fecha de Expiración"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaExpiracion}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -57,20 +75,59 @@
                                 <f:facet name="header">
                                     <h:outputText value="&nbsp;"/>
                                 </f:facet>
-                                <h:commandLink action="#{cuentaBancariaController.prepareView}" value="#{bundle.ListCuentaBancariaViewLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{cuentaBancariaController.prepareEdit}" value="#{bundle.ListCuentaBancariaEditLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{cuentaBancariaController.destroy}" value="#{bundle.ListCuentaBancariaDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{cuentaBancariaController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{cuentaBancariaController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{cuentaBancariaController.destroy}"/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{cuentaBancariaController.prepareCreate}" value="#{bundle.ListCuentaBancariaCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListCuentaBancariaIndexLink}"/>
                 </h:form>
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de cuentas</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form>
+                                <div align="center" >
+                                    <h:panelGrid columns="2">
+                                        
+                                        <h:outputLabel value="Banco: " for="nombreBanco" />
+                                        <h:inputText id="nombreBanco" value="#{cuentaBancariaController.selected.nombreBanco}" title="#{bundle.CreateCuentaBancariaTitle_nombreBanco}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_nombreBanco}"/>
+                                        <h:outputLabel value="Numero de Tarjeta: " for="numeroTarjeta" />
+                                        <h:inputText id="numeroTarjeta" value="#{cuentaBancariaController.selected.numeroTarjeta}" title="#{bundle.CreateCuentaBancariaTitle_numeroTarjeta}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_numeroTarjeta}"/>
+                                        <h:outputLabel value="CVC:" for="cvc" />
+                                        <h:inputText id="cvc" value="#{cuentaBancariaController.selected.cvc}" title="#{bundle.CreateCuentaBancariaTitle_cvc}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_cvc}"/>
+                                        <h:outputLabel value="Fecha de Expiración: " for="fechaExpiracion" />
+                                        <h:inputText id="fechaExpiracion" value="#{cuentaBancariaController.selected.fechaExpiracion}" title="#{bundle.CreateCuentaBancariaTitle_fechaExpiracion}" required="true" requiredMessage="#{bundle.CreateCuentaBancariaRequiredMessage_fechaExpiracion}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>
+                                    </h:panelGrid>
+                                    <br />
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{cuentaBancariaController.create}" />
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{cuentaBancariaController.prepareList}" value="Ver Lista de Cuentas" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </ui:define>
     </ui:composition>
