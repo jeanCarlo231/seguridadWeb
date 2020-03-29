@@ -67,6 +67,8 @@ public class login implements Serializable {
             return "/paginas/usuario/List";
         } else if (usuario.equals("ventas") && contrasenia.equals("ventas")) {
             return "/paginas/ventas/List";
+        } else if (usuario.equals("admin") && contrasenia.equals("admin")) {
+            return "index";
         }
 
         return "login.xhtml";

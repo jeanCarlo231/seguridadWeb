@@ -56,11 +56,7 @@ public class ProductoJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Categoria idCategoria = producto.getIdCategoria();
-            if (idCategoria != null) {
-                idCategoria = em.getReference(idCategoria.getClass(), idCategoria.getIdCategoria());
-                producto.setIdCategoria(idCategoria);
-            }
+            
             Collection<Compras> attachedComprasCollection = new ArrayList<Compras>();
             for (Compras comprasCollectionComprasToAttach : producto.getComprasCollection()) {
                 comprasCollectionComprasToAttach = em.getReference(comprasCollectionComprasToAttach.getClass(), comprasCollectionComprasToAttach.getIdCompras());
@@ -80,10 +76,7 @@ public class ProductoJpaController implements Serializable {
             }
             producto.setInventarioCollection(attachedInventarioCollection);
             em.persist(producto);
-            if (idCategoria != null) {
-                idCategoria.getProductoCollection().add(producto);
-                idCategoria = em.merge(idCategoria);
-            }
+            
             for (Compras comprasCollectionCompras : producto.getComprasCollection()) {
                 Producto oldIdProductoOfComprasCollectionCompras = comprasCollectionCompras.getIdProducto();
                 comprasCollectionCompras.setIdProducto(producto);
@@ -132,8 +125,7 @@ public class ProductoJpaController implements Serializable {
             utx.begin();
             em = getEntityManager();
             Producto persistentProducto = em.find(Producto.class, producto.getIdProducto());
-            Categoria idCategoriaOld = persistentProducto.getIdCategoria();
-            Categoria idCategoriaNew = producto.getIdCategoria();
+            
             Collection<Compras> comprasCollectionOld = persistentProducto.getComprasCollection();
             Collection<Compras> comprasCollectionNew = producto.getComprasCollection();
             Collection<Ventas> ventasCollectionOld = persistentProducto.getVentasCollection();
@@ -168,10 +160,7 @@ public class ProductoJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            if (idCategoriaNew != null) {
-                idCategoriaNew = em.getReference(idCategoriaNew.getClass(), idCategoriaNew.getIdCategoria());
-                producto.setIdCategoria(idCategoriaNew);
-            }
+            
             Collection<Compras> attachedComprasCollectionNew = new ArrayList<Compras>();
             for (Compras comprasCollectionNewComprasToAttach : comprasCollectionNew) {
                 comprasCollectionNewComprasToAttach = em.getReference(comprasCollectionNewComprasToAttach.getClass(), comprasCollectionNewComprasToAttach.getIdCompras());
@@ -194,14 +183,7 @@ public class ProductoJpaController implements Serializable {
             inventarioCollectionNew = attachedInventarioCollectionNew;
             producto.setInventarioCollection(inventarioCollectionNew);
             producto = em.merge(producto);
-            if (idCategoriaOld != null && !idCategoriaOld.equals(idCategoriaNew)) {
-                idCategoriaOld.getProductoCollection().remove(producto);
-                idCategoriaOld = em.merge(idCategoriaOld);
-            }
-            if (idCategoriaNew != null && !idCategoriaNew.equals(idCategoriaOld)) {
-                idCategoriaNew.getProductoCollection().add(producto);
-                idCategoriaNew = em.merge(idCategoriaNew);
-            }
+            
             for (Compras comprasCollectionNewCompras : comprasCollectionNew) {
                 if (!comprasCollectionOld.contains(comprasCollectionNewCompras)) {
                     Producto oldIdProductoOfComprasCollectionNewCompras = comprasCollectionNewCompras.getIdProducto();
@@ -294,11 +276,8 @@ public class ProductoJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Categoria idCategoria = producto.getIdCategoria();
-            if (idCategoria != null) {
-                idCategoria.getProductoCollection().remove(producto);
-                idCategoria = em.merge(idCategoria);
-            }
+           
+            
             em.remove(producto);
             utx.commit();
         } catch (Exception ex) {

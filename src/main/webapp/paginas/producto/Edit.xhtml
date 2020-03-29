@@ -26,10 +26,9 @@
                         <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.EditProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_precioUnitario}"/>
                         <h:outputLabel value="#{bundle.EditProductoLabel_status}" for="status" />
                         <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.EditProductoTitle_status}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_status}"/>
-                        <h:outputLabel value="#{bundle.EditProductoLabel_idCategoria}" for="idCategoria" />
-                        <h:selectOneMenu id="idCategoria" value="#{productoController.selected.idCategoria}" title="#{bundle.EditProductoTitle_idCategoria}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_idCategoria}">
-                            <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
-                        </h:selectOneMenu>
+                       
+                            
+                        
                     </h:panelGrid>
                     <h:commandLink action="#{productoController.update}" value="#{bundle.EditProductoSaveLink}"/>
                     <br />

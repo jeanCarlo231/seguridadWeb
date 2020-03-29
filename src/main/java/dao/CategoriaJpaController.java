@@ -41,9 +41,7 @@ public class CategoriaJpaController implements Serializable {
     }
 
     public void create(Categoria categoria) throws RollbackFailureException, Exception {
-        if (categoria.getProductoCollection() == null) {
-            categoria.setProductoCollection(new ArrayList<Producto>());
-        }
+        
         EntityManager em = null;
         try {
             utx.begin();
@@ -54,25 +52,13 @@ public class CategoriaJpaController implements Serializable {
                 categoria.setIdInventario(idInventario);
             }
             Collection<Producto> attachedProductoCollection = new ArrayList<Producto>();
-            for (Producto productoCollectionProductoToAttach : categoria.getProductoCollection()) {
-                productoCollectionProductoToAttach = em.getReference(productoCollectionProductoToAttach.getClass(), productoCollectionProductoToAttach.getIdProducto());
-                attachedProductoCollection.add(productoCollectionProductoToAttach);
-            }
-            categoria.setProductoCollection(attachedProductoCollection);
+           
             em.persist(categoria);
             if (idInventario != null) {
                 idInventario.getCategoriaCollection().add(categoria);
                 idInventario = em.merge(idInventario);
             }
-            for (Producto productoCollectionProducto : categoria.getProductoCollection()) {
-                Categoria oldIdCategoriaOfProductoCollectionProducto = productoCollectionProducto.getIdCategoria();
-                productoCollectionProducto.setIdCategoria(categoria);
-                productoCollectionProducto = em.merge(productoCollectionProducto);
-                if (oldIdCategoriaOfProductoCollectionProducto != null) {
-                    oldIdCategoriaOfProductoCollectionProducto.getProductoCollection().remove(productoCollectionProducto);
-                    oldIdCategoriaOfProductoCollectionProducto = em.merge(oldIdCategoriaOfProductoCollectionProducto);
-                }
-            }
+            
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -96,32 +82,16 @@ public class CategoriaJpaController implements Serializable {
             Categoria persistentCategoria = em.find(Categoria.class, categoria.getIdCategoria());
             Inventario idInventarioOld = persistentCategoria.getIdInventario();
             Inventario idInventarioNew = categoria.getIdInventario();
-            Collection<Producto> productoCollectionOld = persistentCategoria.getProductoCollection();
-            Collection<Producto> productoCollectionNew = categoria.getProductoCollection();
-            List<String> illegalOrphanMessages = null;
-            for (Producto productoCollectionOldProducto : productoCollectionOld) {
-                if (!productoCollectionNew.contains(productoCollectionOldProducto)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Producto " + productoCollectionOldProducto + " since its idCategoria field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
+            
+            
+            
+           
             if (idInventarioNew != null) {
                 idInventarioNew = em.getReference(idInventarioNew.getClass(), idInventarioNew.getIdInventario());
                 categoria.setIdInventario(idInventarioNew);
             }
             Collection<Producto> attachedProductoCollectionNew = new ArrayList<Producto>();
-            for (Producto productoCollectionNewProductoToAttach : productoCollectionNew) {
-                productoCollectionNewProductoToAttach = em.getReference(productoCollectionNewProductoToAttach.getClass(), productoCollectionNewProductoToAttach.getIdProducto());
-                attachedProductoCollectionNew.add(productoCollectionNewProductoToAttach);
-            }
-            productoCollectionNew = attachedProductoCollectionNew;
-            categoria.setProductoCollection(productoCollectionNew);
-            categoria = em.merge(categoria);
+            
             if (idInventarioOld != null && !idInventarioOld.equals(idInventarioNew)) {
                 idInventarioOld.getCategoriaCollection().remove(categoria);
                 idInventarioOld = em.merge(idInventarioOld);
@@ -130,17 +100,7 @@ public class CategoriaJpaController implements Serializable {
                 idInventarioNew.getCategoriaCollection().add(categoria);
                 idInventarioNew = em.merge(idInventarioNew);
             }
-            for (Producto productoCollectionNewProducto : productoCollectionNew) {
-                if (!productoCollectionOld.contains(productoCollectionNewProducto)) {
-                    Categoria oldIdCategoriaOfProductoCollectionNewProducto = productoCollectionNewProducto.getIdCategoria();
-                    productoCollectionNewProducto.setIdCategoria(categoria);
-                    productoCollectionNewProducto = em.merge(productoCollectionNewProducto);
-                    if (oldIdCategoriaOfProductoCollectionNewProducto != null && !oldIdCategoriaOfProductoCollectionNewProducto.equals(categoria)) {
-                        oldIdCategoriaOfProductoCollectionNewProducto.getProductoCollection().remove(productoCollectionNewProducto);
-                        oldIdCategoriaOfProductoCollectionNewProducto = em.merge(oldIdCategoriaOfProductoCollectionNewProducto);
-                    }
-                }
-            }
+            
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -175,17 +135,7 @@ public class CategoriaJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The categoria with id " + id + " no longer exists.", enfe);
             }
-            List<String> illegalOrphanMessages = null;
-            Collection<Producto> productoCollectionOrphanCheck = categoria.getProductoCollection();
-            for (Producto productoCollectionOrphanCheckProducto : productoCollectionOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Categoria (" + categoria + ") cannot be destroyed since the Producto " + productoCollectionOrphanCheckProducto + " in its productoCollection field has a non-nullable idCategoria field.");
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
+            
             Inventario idInventario = categoria.getIdInventario();
             if (idInventario != null) {
                 idInventario.getCategoriaCollection().remove(categoria);

@@ -49,8 +49,7 @@ public class Categoria implements Serializable {
     @JoinColumn(name = "id_inventario", referencedColumnName = "id_inventario")
     @ManyToOne(optional = false)
     private Inventario idInventario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
-    private Collection<Producto> productoCollection;
+    
 
     public Categoria() {
     }
@@ -88,14 +87,7 @@ public class Categoria implements Serializable {
         this.idInventario = idInventario;
     }
 
-    public Collection<Producto> getProductoCollection() {
-        return productoCollection;
-    }
-
-    public void setProductoCollection(Collection<Producto> productoCollection) {
-        this.productoCollection = productoCollection;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

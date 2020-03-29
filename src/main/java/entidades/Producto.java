@@ -63,9 +63,7 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "status")
     private int status;
-    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
-    @ManyToOne(optional = false)
-    private Categoria idCategoria;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private Collection<Compras> comprasCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
@@ -128,13 +126,7 @@ public class Producto implements Serializable {
         this.status = status;
     }
 
-    public Categoria getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Categoria idCategoria) {
-        this.idCategoria = idCategoria;
-    }
+    
 
     public Collection<Compras> getComprasCollection() {
         return comprasCollection;
