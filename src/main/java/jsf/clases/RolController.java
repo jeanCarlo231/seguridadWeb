@@ -81,6 +81,7 @@ public class RolController implements Serializable {
 
     public String create() {
         try {
+            System.out.println(current);
             getFacade().create(current);
             JsfUtil.addSuccessMessage("¡Rol creado con exito!");
             return prepareCreate();
