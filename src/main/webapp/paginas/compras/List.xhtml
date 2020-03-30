@@ -176,9 +176,11 @@
                                         <h:outputLabel value="#{bundle.CreateComprasLabel_statusCompra}" for="statusCompra" />
                                         <h:inputText class="form-control" id="statusCompra" value="#{comprasController.selected.statusCompra}" title="#{bundle.CreateComprasTitle_statusCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_statusCompra}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateComprasLabel_fecha}" for="fecha" />
-                                        <h:inputText class="form-control" id="fecha" value="#{comprasController.selected.fecha}" title="#{bundle.CreateComprasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_fecha}"/>
-
+                                        <h:outputLabel value="Fecha: " for="fecha" />
+                                        <h:inputText class="form-control" id="fecha" value="#{comprasController.selected.fecha}" title="#{bundle.CreateComprasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_fecha}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>
+                                        
                                         <h:outputLabel value="#{bundle.CreateComprasLabel_iva}" for="iva" />
                                         <h:inputText class="form-control" id="iva" value="#{comprasController.selected.iva}" title="#{bundle.CreateComprasTitle_iva}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_iva}"/>
 

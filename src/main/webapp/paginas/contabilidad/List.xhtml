@@ -106,8 +106,10 @@
                                         <h:outputLabel value="#{bundle.CreateContabilidadLabel_montoTotal}" for="montoTotal" />
                                         <h:inputText class="form-control" id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.CreateContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_montoContabilidad}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_fechaPago}" for="fechaPago" />
-                                        <h:inputText class="form-control" id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}"/>
+                                        <h:outputLabel value="Fecha: " for="fechaPago" />
+                                        <h:inputText class="form-control" id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>  
                                         
                                         <h:outputLabel value="Venta:" for="idVenta" />
                                         <h:selectOneMenu class="form-control" id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.CreateContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idVenta}">

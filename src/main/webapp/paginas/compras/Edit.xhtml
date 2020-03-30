@@ -50,7 +50,7 @@
                             <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                         <h:outputLabel  value="#{bundle.EditComprasLabel_idFactura}" for="idFactura" />
-                        <h:selectOneMenu class="form-control"id="idFactura" value="#{comprasController.selected.idFactura}" title="#{bundle.EditComprasTitle_idFactura}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idFactura}">
+                        <h:selectOneMenu class="form-control" id="idFactura" value="#{comprasController.selected.idFactura}" title="#{bundle.EditComprasTitle_idFactura}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idFactura}">
                             <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{bundle.EditComprasLabel_idPago}" for="idPago" />
@@ -66,7 +66,7 @@
                             <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                     </h:panelGrid>
-                    <h:commandLink action="#{comprasController.update}" value="#{bundle.EditComprasSaveLink}"/>
+                   
                     <br />
                         <h:commandLink class="btn btn-sm btn-info" action="#{comprasController.update}" value="Aceptar"/>
                         &nbsp; 
@@ -75,6 +75,7 @@
                         <br />
                 </h:form>
             </div>
+        </div>
         </ui:define>
     </ui:composition>
 

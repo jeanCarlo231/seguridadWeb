@@ -34,7 +34,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="#{bundle.EditContabilidadLabel_idVenta}" for="idVenta" />
-                        <h:selectOneMenu class="form-control"id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.EditContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_idVenta}">
+                        <h:selectOneMenu class="form-control" id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.EditContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_idVenta}">
                             <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
                     </h:panelGrid>
