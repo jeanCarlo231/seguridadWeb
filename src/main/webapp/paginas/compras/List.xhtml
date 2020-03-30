@@ -136,7 +136,7 @@
                                 </f:facet>
                                 <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{comprasController.prepareView}" />
                                 <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{comprasController.prepareEdit}" />
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" action="#{comprasController.destroy}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{comprasController.destroy}" />
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
@@ -222,7 +222,7 @@
                                     <br></br>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <h:commandLink action="#{comprasController.prepareList}" value="Ver Lista de Clientes" immediate="true"/>
+                                        <h:commandLink action="#{comprasController.prepareList}" value="Ver Lista de Compras" immediate="true"/>
                                     </div>
                                 </div>
                             </h:form>

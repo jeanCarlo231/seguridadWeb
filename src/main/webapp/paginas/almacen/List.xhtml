@@ -68,7 +68,7 @@
                                 </f:facet>
                                 <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{almacenController.prepareView}" />
                                 <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{almacenController.prepareEdit}"/>
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" action="#{almacenController.destroy}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{almacenController.destroy}"/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>

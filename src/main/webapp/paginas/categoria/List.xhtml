@@ -67,7 +67,7 @@
                                 </f:facet>
                                 <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{categoriaController.prepareView}" />
                                 <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{categoriaController.prepareEdit}" />
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" action="#{categoriaController.destroy}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{categoriaController.destroy}" />
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
@@ -101,7 +101,6 @@
                                         <h:selectOneMenu class="form-control" id="idInventario" value="#{categoriaController.selected.idInventario}" title="#{bundle.CreateCategoriaTitle_idInventario}" required="true" requiredMessage="#{bundle.CreateCategoriaRequiredMessage_idInventario}">
                                             <f:selectItems value="#{inventarioController.itemsAvailableSelectOne}"/>
                                         </h:selectOneMenu>
-                                     
                                     </h:panelGrid>
 
 

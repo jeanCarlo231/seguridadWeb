@@ -27,7 +27,7 @@
 
                         <p align="right">
                             <button action="#{contabilidadController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
-                                Craer
+                                Crear
                             </button>
                         </p>
                     </div>
@@ -74,9 +74,9 @@
                                 <f:facet name="header">
                                     <h:outputText value="Acciones"/>
                                 </f:facet>
-                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{contabilidadController.prepareView}" value="#{bundle.ListContabilidadViewLink}"/>
-                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{contabilidadController.prepareEdit}" value="#{bundle.ListContabilidadEditLink}"/>
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" action="#{contabilidadController.destroy}" value="#{bundle.ListContabilidadDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{contabilidadController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{contabilidadController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{contabilidadController.destroy}" />
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
@@ -92,7 +92,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header" align="center">
-                            <h4 class="modal-title">Registro de Cliente</h4>
+                            <h4 class="modal-title">Registro de Contabilidad</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -103,43 +103,28 @@
                                 <div align="center" >
 
                                     <h:panelGrid columns="2">
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_nombre}" for="nombre" />
-                                        <h:inputText class="form-control" id="nombre" value="#{clienteController.selected.nombre}" title="#{bundle.CreateClienteTitle_nombre}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nombre}"/>
+                                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_montoTotal}" for="montoTotal" />
+                                        <h:inputText class="form-control" id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.CreateContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_montoContabilidad}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_rfc}" for="rfc" />
-                                        <h:inputText class="form-control" id="rfc" value="#{clienteController.selected.rfc}" title="#{bundle.CreateClienteTitle_rfc}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_rfc}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_estado}" for="estado" />
-                                        <h:inputText class="form-control" id="estado" value="#{clienteController.selected.estado}" title="#{bundle.CreateClienteTitle_estado}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_estado}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_municipio}" for="municipio" />
-                                        <h:inputText class="form-control" id="municipio" value="#{clienteController.selected.municipio}" title="#{bundle.CreateClienteTitle_municipio}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_municipio}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_calle}" for="calle" />
-                                        <h:inputText class="form-control" id="calle" value="#{clienteController.selected.calle}" title="#{bundle.CreateClienteTitle_calle}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_calle}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_numero}" for="numero" />
-                                        <h:inputText class="form-control" id="numero" value="#{clienteController.selected.numero}" title="#{bundle.CreateClienteTitle_numero}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_numero}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_cp}" for="cp" />
-                                        <h:inputText class="form-control" id="cp" value="#{clienteController.selected.cp}" title="#{bundle.CreateClienteTitle_cp}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_cp}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_status}" for="status" />
-                                        <h:inputText class="form-control" id="status" value="#{clienteController.selected.status}" title="#{bundle.CreateClienteTitle_status}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_status}"/>
-
-                                        <h:outputLabel value="#{bundle.CreateClienteLabel_email}" for="email" />
-                                        <h:inputText class="form-control" id="email" value="#{clienteController.selected.email}" title="#{bundle.CreateClienteTitle_email}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_email}"/>
+                                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_fechaPago}" for="fechaPago" />
+                                        <h:inputText class="form-control" id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}"/>
+                                        
+                                        <h:outputLabel value="Venta:" for="idVenta" />
+                                        <h:selectOneMenu class="form-control" id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.CreateContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idVenta}">
+                                            <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
                                     </h:panelGrid>
 
 
                                     <br></br>
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{clienteController.create()}" />
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{contabilidadController.create()}" />
                                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
                                     <br></br>
                                     <br></br>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <h:commandLink action="#{clienteController.prepareList}" value="Ver Lista de Clientes" immediate="true"/>
+                                        <h:commandLink action="#{contabilidadController.prepareList}" value="Ver Lista de Registros" immediate="true"/>
                                     </div>
                                 </div>
                             </h:form>
