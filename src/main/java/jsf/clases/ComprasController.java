@@ -82,11 +82,11 @@ public class ComprasController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ComprasCreated"));
-            return prepareCreate();
+            JsfUtil.addSuccessMessage("¡Compra creada con exito!");
+            return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            return "List";
         }
     }
 
@@ -99,11 +99,11 @@ public class ComprasController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ComprasUpdated"));
-            return "View";
+            JsfUtil.addSuccessMessage("¡Compra editada con exito!");
+            return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            return "List";
         }
     }
 
@@ -132,9 +132,9 @@ public class ComprasController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ComprasDeleted"));
+            JsfUtil.addSuccessMessage("¡Compra eliminada con exito!");
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+           JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
         }
     }
 

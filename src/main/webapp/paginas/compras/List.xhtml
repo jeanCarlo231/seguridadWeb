@@ -11,6 +11,27 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+
+                <div style="background-color: white">
+                    <br></br>
+                    <h1 align="center">Compras</h1>
+                    <br></br>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <p align="right">
+                            <button action="#{comprasController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                Crear
+                            </button>
+                        </p>
+                    </div>
+                </div>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -20,7 +41,9 @@
                         <h:outputText value="#{comprasController.pagination.pageFirstItem + 1}..#{comprasController.pagination.pageLastItem + 1}/#{comprasController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{comprasController.previous}" value="#{bundle.Previous} #{comprasController.pagination.pageSize}" rendered="#{comprasController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{comprasController.next}" value="#{bundle.Next} #{comprasController.pagination.pageSize}" rendered="#{comprasController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{comprasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        
+                        
+                        <h:dataTable class="table table-sm table-light" value="#{comprasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListComprasTitle_idCompras}"/>
@@ -109,23 +132,108 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
+                                     <h:outputText value="Acciones"/>
                                 </f:facet>
-                                <h:commandLink action="#{comprasController.prepareView}" value="#{bundle.ListComprasViewLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{comprasController.prepareEdit}" value="#{bundle.ListComprasEditLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{comprasController.destroy}" value="#{bundle.ListComprasDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{comprasController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{comprasController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{comprasController.destroy}" />
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{comprasController.prepareCreate}" value="#{bundle.ListComprasCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListComprasIndexLink}"/>
+                    
                 </h:form>
             </div>
+            
+            
+            
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de Compra</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form>
+                                <div align="center" >
+
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_cantidad}" for="cantidad" />
+                                        <h:inputText class="form-control" id="cantidad" value="#{comprasController.selected.cantidad}" title="#{bundle.CreateComprasTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_cantidad}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_precioCompra}" for="precioCompra" />
+                                        <h:inputText class="form-control" id="precioCompra" value="#{comprasController.selected.precioCompra}" title="#{bundle.CreateComprasTitle_precioCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioCompra}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_precioVenta}" for="precioVenta" />
+                                        <h:inputText class="form-control" id="precioVenta" value="#{comprasController.selected.precioVenta}" title="#{bundle.CreateComprasTitle_precioVenta}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioVenta}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_statusCompra}" for="statusCompra" />
+                                        <h:inputText class="form-control" id="statusCompra" value="#{comprasController.selected.statusCompra}" title="#{bundle.CreateComprasTitle_statusCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_statusCompra}"/>
+
+                                        <h:outputLabel value="Fecha: " for="fecha" />
+                                        <h:inputText class="form-control" id="fecha" value="#{comprasController.selected.fecha}" title="#{bundle.CreateComprasTitle_fecha}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_fecha}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>
+                                        
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_iva}" for="iva" />
+                                        <h:inputText class="form-control" id="iva" value="#{comprasController.selected.iva}" title="#{bundle.CreateComprasTitle_iva}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_iva}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_subtotal}" for="subtotal" />
+                                        <h:inputText class="form-control" id="cp" value="#{comprasController.selected.subtotal}" title="#{bundle.CreateComprasTitle_subtotal}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_subtotal}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateComprasLabel_total}" for="total" />
+                                        <h:inputText class="form-control" id="status" value="#{comprasController.selected.total}" title="#{bundle.CreateComprasTitle_total}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_total}"/>
+                                        
+                                        <h:outputLabel value="Empleado:" for="idEmpleado" />
+                                        <h:selectOneMenu class="form-control" id="idEmpleado" value="#{comprasController.selected.idEmpleado}" title="#{bundle.CreateComprasTitle_idEmpleado}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idEmpleado}">
+                                            <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
+                                        <h:outputLabel value="Factura:" for="idFactura" />
+                                        <h:selectOneMenu class="form-control" id="idFactura" value="#{comprasController.selected.idFactura}" title="#{bundle.CreateComprasTitle_idFactura}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idFactura}">
+                                            <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
+                                        <h:outputLabel value="Pago:" for="idPago" />
+                                        <h:selectOneMenu class="form-control" id="idPago" value="#{comprasController.selected.idPago}" title="#{bundle.CreateComprasTitle_idPago}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idPago}">
+                                            <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
+                                        <h:outputLabel value="Producto:" for="idProducto" />
+                                        <h:selectOneMenu class="form-control" id="idProducto" value="#{comprasController.selected.idProducto}" title="#{bundle.CreateComprasTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idProducto}">
+                                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
+                                        <h:outputLabel value="Proveedor:" for="idProveedor" />
+                                        <h:selectOneMenu class="form-control" id="idProveedor" value="#{comprasController.selected.idProveedor}" title="#{bundle.CreateComprasTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_idProveedor}">
+                                            <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                     </h:panelGrid>
+
+
+                                    <br></br>
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{comprasController.create()}" />
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{comprasController.prepareList}" value="Ver Lista de Compras" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            
         </ui:define>
     </ui:composition>
 

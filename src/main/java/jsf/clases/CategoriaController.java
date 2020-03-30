@@ -82,11 +82,11 @@ public class CategoriaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoriaCreated"));
-            return prepareCreate();
+            JsfUtil.addSuccessMessage("¡Categoria creado con exito!");
+            return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            return "List";
         }
     }
 
@@ -99,11 +99,11 @@ public class CategoriaController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoriaUpdated"));
-            return "View";
+            JsfUtil.addSuccessMessage("¡Categoria editado con exito!");      
+            return "List";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            return "List";
         }
     }
 
@@ -132,9 +132,9 @@ public class CategoriaController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CategoriaDeleted"));
+            JsfUtil.addSuccessMessage("¡Categoria eliminado con exito!");
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
         }
     }
 

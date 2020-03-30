@@ -11,6 +11,27 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+
+                <div style="background-color: white">
+                    <br></br>
+                    <h1 align="center">Contabilidad</h1>
+                    <br></br>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <p align="right">
+                            <button action="#{contabilidadController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                Crear
+                            </button>
+                        </p>
+                    </div>
+                </div>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -20,7 +41,9 @@
                         <h:outputText value="#{contabilidadController.pagination.pageFirstItem + 1}..#{contabilidadController.pagination.pageLastItem + 1}/#{contabilidadController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{contabilidadController.previous}" value="#{bundle.Previous} #{contabilidadController.pagination.pageSize}" rendered="#{contabilidadController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{contabilidadController.next}" value="#{bundle.Next} #{contabilidadController.pagination.pageSize}" rendered="#{contabilidadController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{contabilidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        
+                        
+                        <h:dataTable class="table table-sm table-light" value="#{contabilidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListContabilidadTitle_idContabilidad}"/>
@@ -49,23 +72,70 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
+                                    <h:outputText value="Acciones"/>
                                 </f:facet>
-                                <h:commandLink action="#{contabilidadController.prepareView}" value="#{bundle.ListContabilidadViewLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{contabilidadController.prepareEdit}" value="#{bundle.ListContabilidadEditLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{contabilidadController.destroy}" value="#{bundle.ListContabilidadDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{contabilidadController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{contabilidadController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{contabilidadController.destroy}" />
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{contabilidadController.prepareCreate}" value="#{bundle.ListContabilidadCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListContabilidadIndexLink}"/>
+                    
                 </h:form>
             </div>
+            
+            
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de Contabilidad</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form>
+                                <div align="center" >
+
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="#{bundle.CreateContabilidadLabel_montoTotal}" for="montoTotal" />
+                                        <h:inputText class="form-control" id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.CreateContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_montoContabilidad}"/>
+
+                                        <h:outputLabel value="Fecha: " for="fechaPago" />
+                                        <h:inputText class="form-control" id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.CreateContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_fechaPago}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>  
+                                        
+                                        <h:outputLabel value="Venta:" for="idVenta" />
+                                        <h:selectOneMenu class="form-control" id="idVenta" value="#{contabilidadController.selected.idVenta}" title="#{bundle.CreateContabilidadTitle_idVenta}" required="true" requiredMessage="#{bundle.CreateContabilidadRequiredMessage_idVenta}">
+                                            <f:selectItems value="#{ventasController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        
+                                    </h:panelGrid>
+
+
+                                    <br></br>
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{contabilidadController.create()}" />
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{contabilidadController.prepareList}" value="Ver Lista de Registros" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            
         </ui:define>
     </ui:composition>
 
