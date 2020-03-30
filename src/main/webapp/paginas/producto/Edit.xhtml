@@ -11,13 +11,20 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+                <div style="background-color: white">
+                    <br></br>
+                    <h4 align="center">Editar Información de producto</h4>
+                    <br></br>
+                </div>
+                <br></br>
+                <div style="background-color: white" align="center">
+                    <br></br>
                 <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{bundle.EditProductoLabel_idProducto}" for="idProducto" />
-                        <h:inputText id="idProducto" value="#{productoController.selected.idProducto}" title="#{bundle.EditProductoTitle_idProducto}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_idProducto}"/>
+                    <h:panelGrid columns="2"> 
                         <h:outputLabel value="#{bundle.EditProductoLabel_nombreProducto}" for="nombreProducto" />
                         <h:inputText id="nombreProducto" value="#{productoController.selected.nombreProducto}" title="#{bundle.EditProductoTitle_nombreProducto}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_nombreProducto}"/>
                         <h:outputLabel value="#{bundle.EditProductoLabel_descripcion}" for="descripcion" />
@@ -25,21 +32,16 @@
                         <h:outputLabel value="#{bundle.EditProductoLabel_precioUnitario}" for="precioUnitario" />
                         <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.EditProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_precioUnitario}"/>
                         <h:outputLabel value="#{bundle.EditProductoLabel_status}" for="status" />
-                        <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.EditProductoTitle_status}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_status}"/>
-                       
-                            
-                        
+                        <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.EditProductoTitle_status}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_status}"/>     
                     </h:panelGrid>
-                    <h:commandLink action="#{productoController.update}" value="#{bundle.EditProductoSaveLink}"/>
                     <br />
-                    <br />
-                    <h:link outcome="View" value="#{bundle.EditProductoViewLink}"/>
-                    <br />
-                    <h:commandLink action="#{productoController.prepareList}" value="#{bundle.EditProductoShowAllLink}" immediate="true"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.EditProductoIndexLink}" />
+                        <h:commandLink class="btn btn-sm btn-info" action="#{productoController.update}" value="Aceptar"/>
+                        &nbsp; 
+                        <h:commandLink class="btn btn-sm btn-danger" action="#{productoController.prepareList()}" value="Cancelar"/>
+                        <br />
+                        <br />
                 </h:form>
+            </div>
             </div>
         </ui:define>
     </ui:composition>
