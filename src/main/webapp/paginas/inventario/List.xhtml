@@ -11,19 +11,37 @@
         </ui:define>
         <ui:define name="body">
             <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </div>
+
+                <div style="background-color: white">
+                    <br></br>
+                    <h1 align="center">Inventario</h1>
+                    <br></br>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+
+                        <p align="right">
+                            <button action="#{inventarioController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                Nuevo registro
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <br></br>
                 <h:form styleClass="jsfcrud_list_form">
-                    <h:panelGroup id="messagePanel" layout="block">
-                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                    </h:panelGroup>
                     <h:outputText escape="false" value="#{bundle.ListInventarioEmpty}" rendered="#{inventarioController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{inventarioController.items.rowCount > 0}">
                         <h:outputText value="#{inventarioController.pagination.pageFirstItem + 1}..#{inventarioController.pagination.pageLastItem + 1}/#{inventarioController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{inventarioController.previous}" value="#{bundle.Previous} #{inventarioController.pagination.pageSize}" rendered="#{inventarioController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{inventarioController.next}" value="#{bundle.Next} #{inventarioController.pagination.pageSize}" rendered="#{inventarioController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{inventarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:dataTable class="table table-sm table-light" value="#{inventarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListInventarioTitle_idInventario}"/>
+                                    <h:outputText value="#"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idInventario}"/>
                             </h:column>
@@ -41,46 +59,92 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListInventarioTitle_costoPagadoProductos}"/>
+                                    <h:outputText value="Costo Pagado"/>
                                 </f:facet>
                                 <h:outputText value="#{item.costoPagadoProductos}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListInventarioTitle_idAlmacen}"/>
+                                    <h:outputText value="Almacen"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idAlmacen}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListInventarioTitle_idProducto}"/>
+                                    <h:outputText value="Producto"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idProducto}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListInventarioTitle_idProveedor}"/>
+                                    <h:outputText value="Proveedor"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idProveedor}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
+                                    <h:outputText value="Acciones"/>
                                 </f:facet>
-                                <h:commandLink action="#{inventarioController.prepareView}" value="#{bundle.ListInventarioViewLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{inventarioController.prepareEdit}" value="#{bundle.ListInventarioEditLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{inventarioController.destroy}" value="#{bundle.ListInventarioDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{inventarioController.prepareView}" />
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{inventarioController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{inventarioController.destroy}"/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{inventarioController.prepareCreate}" value="#{bundle.ListInventarioCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListInventarioIndexLink}"/>
                 </h:form>
+            </div>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de inventario</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form>
+                                <div align="center" >
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Status: " for="status" />
+                                        <h:inputText class="form-control" id="status" value="#{inventarioController.selected.status}" title="#{bundle.CreateInventarioTitle_status}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_status}"/>
+                                        <h:outputLabel value="Cantidad: " for="cantidad" />
+                                        <h:inputText class="form-control" id="cantidad" value="#{inventarioController.selected.cantidad}" title="#{bundle.CreateInventarioTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_cantidad}"/>
+                                        <h:outputLabel value="Costo Pagado: " for="costoPagadoProductos" />
+                                        <h:inputText class="form-control" id="costoPagadoProductos" value="#{inventarioController.selected.costoPagadoProductos}" title="#{bundle.CreateInventarioTitle_costoPagadoProductos}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_costoPagadoProductos}"/>
+                                        <h:outputLabel value="Almacen: " for="idAlmacen" />
+                                        <h:selectOneMenu class="form-control" id="idAlmacen" value="#{inventarioController.selected.idAlmacen}" title="#{bundle.CreateInventarioTitle_idAlmacen}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_idAlmacen}">
+                                            <f:selectItems value="#{almacenController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        <h:outputLabel value="Producto: " for="idProducto" />
+                                        <h:selectOneMenu class="form-control" id="idProducto" value="#{inventarioController.selected.idProducto}" title="#{bundle.CreateInventarioTitle_idProducto}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_idProducto}">
+                                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                        <h:outputLabel value="Proveedor: " for="idProveedor" />
+                                        <h:selectOneMenu class="form-control" id="idProveedor" value="#{inventarioController.selected.idProveedor}" title="#{bundle.CreateInventarioTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateInventarioRequiredMessage_idProveedor}">
+                                            <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                    </h:panelGrid>
+                                    <br />
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{inventarioController.create}" />
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{inventarioController.prepareList}" value="Ver Inventario" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </ui:define>
     </ui:composition>
