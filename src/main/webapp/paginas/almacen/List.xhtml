@@ -99,7 +99,7 @@
                                         <h:outputLabel value="#{bundle.CreateAlmacenLabel_stock}" for="stock" />
                                         <h:inputText class="form-control" id="stock" value="#{almacenController.selected.stock}" title="#{bundle.CreateAlmacenTitle_stock}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_stock}"/>
                                         <h:outputLabel value="Proveedor:" for="idProveedor" />
-                                        <h:selectOneMenu class="form-control" id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.CreateAlmacenTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateProveedorRequiredMessage_idProveedor}">
+                                        <h:selectOneMenu class="form-control" id="idProveedor" value="#{almacenController.selected.idProveedor}" title="#{bundle.CreateAlmacenTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateAlmacenRequiredMessage_idProveedor}">
                                             <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
                                         </h:selectOneMenu>
                                         
