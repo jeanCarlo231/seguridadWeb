@@ -26,7 +26,7 @@
                     <div class="card-body">
 
                         <p align="right">
-                            <button action="#{comprasController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                            <button action="#{contabilidadController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
                                 Craer
                             </button>
                         </p>
@@ -41,7 +41,9 @@
                         <h:outputText value="#{contabilidadController.pagination.pageFirstItem + 1}..#{contabilidadController.pagination.pageLastItem + 1}/#{contabilidadController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{contabilidadController.previous}" value="#{bundle.Previous} #{contabilidadController.pagination.pageSize}" rendered="#{contabilidadController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{contabilidadController.next}" value="#{bundle.Next} #{contabilidadController.pagination.pageSize}" rendered="#{contabilidadController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable value="#{contabilidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        
+                        
+                        <h:dataTable class="table table-sm table-light" value="#{contabilidadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListContabilidadTitle_idContabilidad}"/>
@@ -70,23 +72,83 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
+                                    <h:outputText value="Acciones"/>
                                 </f:facet>
-                                <h:commandLink action="#{contabilidadController.prepareView}" value="#{bundle.ListContabilidadViewLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{contabilidadController.prepareEdit}" value="#{bundle.ListContabilidadEditLink}"/>
-                                <h:outputText value=" "/>
-                                <h:commandLink action="#{contabilidadController.destroy}" value="#{bundle.ListContabilidadDestroyLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{contabilidadController.prepareView}" value="#{bundle.ListContabilidadViewLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{contabilidadController.prepareEdit}" value="#{bundle.ListContabilidadEditLink}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" action="#{contabilidadController.destroy}" value="#{bundle.ListContabilidadDestroyLink}"/>
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{contabilidadController.prepareCreate}" value="#{bundle.ListContabilidadCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListContabilidadIndexLink}"/>
+                    
                 </h:form>
             </div>
+            
+            
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de Cliente</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form>
+                                <div align="center" >
+
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_nombre}" for="nombre" />
+                                        <h:inputText class="form-control" id="nombre" value="#{clienteController.selected.nombre}" title="#{bundle.CreateClienteTitle_nombre}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_nombre}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_rfc}" for="rfc" />
+                                        <h:inputText class="form-control" id="rfc" value="#{clienteController.selected.rfc}" title="#{bundle.CreateClienteTitle_rfc}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_rfc}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_estado}" for="estado" />
+                                        <h:inputText class="form-control" id="estado" value="#{clienteController.selected.estado}" title="#{bundle.CreateClienteTitle_estado}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_estado}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_municipio}" for="municipio" />
+                                        <h:inputText class="form-control" id="municipio" value="#{clienteController.selected.municipio}" title="#{bundle.CreateClienteTitle_municipio}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_municipio}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_calle}" for="calle" />
+                                        <h:inputText class="form-control" id="calle" value="#{clienteController.selected.calle}" title="#{bundle.CreateClienteTitle_calle}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_calle}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_numero}" for="numero" />
+                                        <h:inputText class="form-control" id="numero" value="#{clienteController.selected.numero}" title="#{bundle.CreateClienteTitle_numero}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_numero}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_cp}" for="cp" />
+                                        <h:inputText class="form-control" id="cp" value="#{clienteController.selected.cp}" title="#{bundle.CreateClienteTitle_cp}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_cp}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_status}" for="status" />
+                                        <h:inputText class="form-control" id="status" value="#{clienteController.selected.status}" title="#{bundle.CreateClienteTitle_status}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_status}"/>
+
+                                        <h:outputLabel value="#{bundle.CreateClienteLabel_email}" for="email" />
+                                        <h:inputText class="form-control" id="email" value="#{clienteController.selected.email}" title="#{bundle.CreateClienteTitle_email}" required="true" requiredMessage="#{bundle.CreateClienteRequiredMessage_email}"/>
+                                    </h:panelGrid>
+
+
+                                    <br></br>
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{clienteController.create()}" />
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{clienteController.prepareList}" value="Ver Lista de Clientes" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            
         </ui:define>
     </ui:composition>
 
