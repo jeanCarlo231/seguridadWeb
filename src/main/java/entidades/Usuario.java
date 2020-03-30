@@ -43,22 +43,27 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_usuario")
     private Integer idUsuario;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "usuario")
     private String usuario;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "contrase\u00f1a")
     private String contraseña;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "activo")
     private int activo;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private Collection<Empleado> empleadoCollection;
+    
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne(optional = false)
     private Rol idRol;
