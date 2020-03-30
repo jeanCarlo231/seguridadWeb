@@ -29,11 +29,11 @@
                         
                         <h:outputLabel value="#{bundle.EditComprasLabel_cantidad}" for="cantidad" />
                         <h:inputText class="form-control" id="cantidad" value="#{comprasController.selected.cantidad}" title="#{bundle.EditComprasTitle_cantidad}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_cantidad}"/>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_precioCompra}" for="precioCompra" />
+                        <h:outputLabel value="Precio de Compra: " for="precioCompra" />
                         <h:inputText class="form-control" id="precioCompra" value="#{comprasController.selected.precioCompra}" title="#{bundle.EditComprasTitle_precioCompra}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_precioCompra}"/>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_precioVenta}" for="precioVenta" />
+                        <h:outputLabel value="Precio de Venta: " for="precioVenta" />
                         <h:inputText class="form-control" id="precioVenta" value="#{comprasController.selected.precioVenta}" title="#{bundle.EditComprasTitle_precioVenta}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_precioVenta}"/>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_statusCompra}" for="statusCompra" />
+                        <h:outputLabel value="Status: " for="statusCompra" />
                         <h:inputText class="form-control" id="statusCompra" value="#{comprasController.selected.statusCompra}" title="#{bundle.EditComprasTitle_statusCompra}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_statusCompra}"/>
                         <h:outputLabel value="#{bundle.EditComprasLabel_fecha}" for="fecha" />
                         <h:inputText class="form-control" id="fecha" value="#{comprasController.selected.fecha}" title="#{bundle.EditComprasTitle_fecha}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_fecha}">
@@ -45,23 +45,23 @@
                         <h:inputText class="form-control" id="subtotal" value="#{comprasController.selected.subtotal}" title="#{bundle.EditComprasTitle_subtotal}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_subtotal}"/>
                         <h:outputLabel value="#{bundle.EditComprasLabel_total}" for="total" />
                         <h:inputText class="form-control" id="total" value="#{comprasController.selected.total}" title="#{bundle.EditComprasTitle_total}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_total}"/>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_idEmpleado}" for="idEmpleado" />
+                        <h:outputLabel value="Empleado:" for="idEmpleado" />
                         <h:selectOneMenu class="form-control" id="idEmpleado" value="#{comprasController.selected.idEmpleado}" title="#{bundle.EditComprasTitle_idEmpleado}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idEmpleado}">
                             <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel  value="#{bundle.EditComprasLabel_idFactura}" for="idFactura" />
+                        <h:outputLabel  value="Factura:" for="idFactura" />
                         <h:selectOneMenu class="form-control" id="idFactura" value="#{comprasController.selected.idFactura}" title="#{bundle.EditComprasTitle_idFactura}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idFactura}">
                             <f:selectItems value="#{facturacionController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_idPago}" for="idPago" />
+                        <h:outputLabel value="Pago:" for="idPago" />
                         <h:selectOneMenu class="form-control" id="idPago" value="#{comprasController.selected.idPago}" title="#{bundle.EditComprasTitle_idPago}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idPago}">
                             <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_idProducto}" for="idProducto" />
+                        <h:outputLabel value="Producto: " for="idProducto" />
                         <h:selectOneMenu class="form-control" id="idProducto" value="#{comprasController.selected.idProducto}" title="#{bundle.EditComprasTitle_idProducto}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idProducto}">
                             <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="#{bundle.EditComprasLabel_idProveedor}" for="idProveedor" />
+                        <h:outputLabel value="Proveedor:" for="idProveedor" />
                         <h:selectOneMenu class="form-control" id="idProveedor" value="#{comprasController.selected.idProveedor}" title="#{bundle.EditComprasTitle_idProveedor}" required="true" requiredMessage="#{bundle.EditComprasRequiredMessage_idProveedor}">
                             <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>

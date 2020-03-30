@@ -33,9 +33,6 @@
                     </div>
                 </div>
                 <h:form styleClass="jsfcrud_list_form">
-                    <h:panelGroup id="messagePanel" layout="block">
-                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                    </h:panelGroup>
                     <h:outputText escape="false" value="#{bundle.ListComprasEmpty}" rendered="#{comprasController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{comprasController.items.rowCount > 0}">
                         <h:outputText value="#{comprasController.pagination.pageFirstItem + 1}..#{comprasController.pagination.pageLastItem + 1}/#{comprasController.pagination.itemsCount}"/>&nbsp;
@@ -46,7 +43,7 @@
                         <h:dataTable class="table table-sm table-light" value="#{comprasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idCompras}"/>
+                                    <h:outputText value="#"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idCompras}"/>
                             </h:column>
@@ -58,25 +55,25 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_precioCompra}"/>
+                                    <h:outputText value="P.Compra"/>
                                 </f:facet>
                                 <h:outputText value="#{item.precioCompra}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_precioVenta}"/>
+                                    <h:outputText value="P.Venta"/>
                                 </f:facet>
                                 <h:outputText value="#{item.precioVenta}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_statusCompra}"/>
+                                    <h:outputText value="Status"/>
                                 </f:facet>
                                 <h:outputText value="#{item.statusCompra}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_fecha}"/>
+                                    <h:outputText value="Fecha"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fecha}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -84,7 +81,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_iva}"/>
+                                    <h:outputText value="IVA"/>
                                 </f:facet>
                                 <h:outputText value="#{item.iva}"/>
                             </h:column>
@@ -102,31 +99,31 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idEmpleado}"/>
+                                    <h:outputText value="Empleado"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idEmpleado}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idFactura}"/>
+                                    <h:outputText value="Factura"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idFactura}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idPago}"/>
+                                    <h:outputText value="Pago"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idPago}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idProducto}"/>
+                                    <h:outputText value="Producto"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idProducto}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListComprasTitle_idProveedor}"/>
+                                    <h:outputText value="Proveedor"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idProveedor}"/>
                             </h:column>
@@ -167,13 +164,13 @@
                                         <h:outputLabel value="#{bundle.CreateComprasLabel_cantidad}" for="cantidad" />
                                         <h:inputText class="form-control" id="cantidad" value="#{comprasController.selected.cantidad}" title="#{bundle.CreateComprasTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_cantidad}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateComprasLabel_precioCompra}" for="precioCompra" />
+                                        <h:outputLabel value="Precio de Compra: " for="precioCompra" />
                                         <h:inputText class="form-control" id="precioCompra" value="#{comprasController.selected.precioCompra}" title="#{bundle.CreateComprasTitle_precioCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioCompra}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateComprasLabel_precioVenta}" for="precioVenta" />
+                                        <h:outputLabel value="Precio de Venta: " for="precioVenta" />
                                         <h:inputText class="form-control" id="precioVenta" value="#{comprasController.selected.precioVenta}" title="#{bundle.CreateComprasTitle_precioVenta}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_precioVenta}"/>
 
-                                        <h:outputLabel value="#{bundle.CreateComprasLabel_statusCompra}" for="statusCompra" />
+                                        <h:outputLabel value="Status:" for="statusCompra" />
                                         <h:inputText class="form-control" id="statusCompra" value="#{comprasController.selected.statusCompra}" title="#{bundle.CreateComprasTitle_statusCompra}" required="true" requiredMessage="#{bundle.CreateComprasRequiredMessage_statusCompra}"/>
 
                                         <h:outputLabel value="Fecha: " for="fecha" />

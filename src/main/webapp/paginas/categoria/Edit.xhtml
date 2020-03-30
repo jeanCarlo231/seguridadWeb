@@ -32,7 +32,7 @@
                        
                         <h:outputLabel value="#{bundle.EditCategoriaLabel_nombre}" for="nombre" />
                         <h:inputText class="form-control" id="nombre" value="#{categoriaController.selected.nombre}" title="#{bundle.EditCategoriaTitle_nombre}" required="true" requiredMessage="#{bundle.EditCategoriaRequiredMessage_nombre}"/>
-                        <h:outputLabel value="#{bundle.EditCategoriaLabel_idInventario}" for="idInventario" />
+                        <h:outputLabel value="Inventario: " for="idInventario" />
                         <h:selectOneMenu class="form-control" id="idInventario" value="#{categoriaController.selected.idInventario}" title="#{bundle.EditCategoriaTitle_idInventario}" required="true" requiredMessage="#{bundle.EditCategoriaRequiredMessage_idInventario}">
                             <f:selectItems value="#{inventarioController.itemsAvailableSelectOne}"/>
                         </h:selectOneMenu>

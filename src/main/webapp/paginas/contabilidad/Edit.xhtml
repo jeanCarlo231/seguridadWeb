@@ -27,9 +27,9 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         
-                        <h:outputLabel value="#{bundle.EditContabilidadLabel_montoTotal}" for="montoTotal" />
+                        <h:outputLabel value="Monto Total:" for="montoTotal" />
                         <h:inputText class="form-control" id="montoTotal" value="#{contabilidadController.selected.montoTotal}" title="#{bundle.EditContabilidadTitle_montoTotal}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_montoTotal}"/>
-                        <h:outputLabel value="#{bundle.EditContabilidadLabel_fechaPago}" for="fechaPago" />
+                        <h:outputLabel value="Fecha de pago:" for="fechaPago" />
                         <h:inputText class="form-control" id="fechaPago" value="#{contabilidadController.selected.fechaPago}" title="#{bundle.EditContabilidadTitle_fechaPago}" required="true" requiredMessage="#{bundle.EditContabilidadRequiredMessage_fechaPago}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
