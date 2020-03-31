@@ -23,25 +23,21 @@
                 <br></br>
                 <div style="background-color: white" align="center">
                     <br></br>
-                    <h:form>
+                    <h:form id="edituser">
                         <h:panelGrid columns="2">
                             <h:outputLabel value="#{bundle.EditUsuarioLabel_usuario}" for="usuario" />
-                            <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.EditUsuarioTitle_usuario}" required="true" requiredMessage="El campo usuario es obligatorio"/>
+                            <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.EditUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuario}"/>
                             <h:outputLabel value="#{bundle.EditUsuarioLabel_contraseña}" for="contraseña" />
-                            <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.EditUsuarioTitle_contraseña}" required="true" requiredMessage="El campo contraseña es obligatorio"/>
+                            <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.EditUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_contraseña}"/>
                             <h:outputLabel value="#{bundle.EditUsuarioLabel_activo}" for="activo" />
-                            <h:selectOneMenu class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="El campo status es obligatorio">
-                                <f:selectItem itemValue = " " itemLabel = "--Seleccionar--" /> 
-                                <f:selectItem itemValue = "1" itemLabel = "Activo" /> 
-                                <f:selectItem itemValue = "0" itemLabel = "Inactivo" /> 
-                            </h:selectOneMenu>
+                            <h:inputText class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.EditUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_activo}"/>
                             <h:outputLabel value="#{bundle.EditUsuarioLabel_idRol}" for="idRol" />
-                            <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.EditUsuarioTitle_idRol}" required="true" requiredMessage="El campo rol es obligatorio">
+                            <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.EditUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_idRol}">
                                 <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
                         <br />
-                        <h:commandLink class="btn btn-sm btn-info" action="#{usuarioController.update}" value="Aceptar"/>
+                        <h:commandLink class="btn btn-sm btn-info" action="#{usuarioController.update}" value="Aceptar"  onclick="return validateForm();"/>
                         &nbsp; 
                         <h:commandLink class="btn btn-sm btn-danger" action="#{usuarioController.prepareList()}" value="Cancelar"/>
                         <br />
@@ -49,6 +45,28 @@
                     </h:form>
                 </div>
             </div>
+                        <script type="text/javascript">
+    function validateForm(){
+      var retorno = true;
+      if($("#edituser\\:usuario").val() === ''){
+        alert('Usuario no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:contraseña").val() === ''){
+        alert('Contraseña no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:activo").val() === ''){
+        alert('Activo no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:idRol option:selected").val() === ''){
+        alert('El rol no puede estar sin selección...');
+        retorno = false;
+      }
+      return retorno;
+    }
+  </script>
         </ui:define>
     </ui:composition>
 
