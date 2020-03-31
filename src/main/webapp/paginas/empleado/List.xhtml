@@ -5,188 +5,234 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListEmpleadoTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <div class="main">
-                <div class="alert alert-dismissible" style="background-color: white">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </div>
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ListEmpleadoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <div class="main">
+        <div class="alert alert-dismissible" style="background-color: white">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </div>
 
-                <div style="background-color: white">
-                    <br></br>
-                    <h1 align="center">Empleados</h1>
-                    <br></br>
-                </div>
-                <div class="card">
-                    <div class="card-body">
+        <div style="background-color: white">
+          <br></br>
+          <h1 align="center">Empleados</h1>
+          <br></br>
+        </div>
+        <div class="card">
+          <div class="card-body">
 
-                        <p align="right">
-                            <button action="#{empleadoController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
-                                Nuevo Empleado
-                            </button>
-                        </p>
-                    </div>
-                </div>
-                <br></br>
-                <h:form styleClass="jsfcrud_list_form">
-                    <h:outputText escape="false" value="#{bundle.ListEmpleadoEmpty}" rendered="#{empleadoController.items.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{empleadoController.items.rowCount > 0}">
-                        <h:outputText value="#{empleadoController.pagination.pageFirstItem + 1}..#{empleadoController.pagination.pageLastItem + 1}/#{empleadoController.pagination.itemsCount}"/>&nbsp;
-                        <h:commandLink action="#{empleadoController.previous}" value="#{bundle.Previous} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{empleadoController.next}" value="#{bundle.Next} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable class="table table-sm table-light" value="#{empleadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEmpleado}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_nombre}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombre}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="A.Paterno"/>
-                                </f:facet>
-                                <h:outputText value="#{item.apellidoP}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="A.Materno"/>
-                                </f:facet>
-                                <h:outputText value="#{item.apellidoM}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Fecha Nacimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaNacimiento}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_domicilio}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.domicilio}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_telefono}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.telefono}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_correo}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.correo}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_curp}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.curp}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="RFC"/>
-                                </f:facet>
-                                <h:outputText value="#{item.rfc}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListEmpleadoTitle_edad}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.edad}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idUsuario}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Acciones"/>
-                                </f:facet>
-                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{empleadoController.prepareView}" />
-                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{empleadoController.prepareEdit}" />
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{empleadoController.destroy}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:panelGroup>
-                </h:form>
+            <p align="right">
+              <button action="#{empleadoController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                Nuevo Empleado
+              </button>
+            </p>
+          </div>
+        </div>
+        <br></br>
+        <h:form styleClass="jsfcrud_list_form">
+          <h:outputText escape="false" value="#{bundle.ListEmpleadoEmpty}" rendered="#{empleadoController.items.rowCount == 0}"/>
+          <h:panelGroup rendered="#{empleadoController.items.rowCount > 0}">
+            <h:outputText value="#{empleadoController.pagination.pageFirstItem + 1}..#{empleadoController.pagination.pageLastItem + 1}/#{empleadoController.pagination.itemsCount}"/>&nbsp;
+            <h:commandLink action="#{empleadoController.previous}" value="#{bundle.Previous} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasPreviousPage}"/>&nbsp;
+            <h:commandLink action="#{empleadoController.next}" value="#{bundle.Next} #{empleadoController.pagination.pageSize}" rendered="#{empleadoController.pagination.hasNextPage}"/>&nbsp;
+            <h:dataTable class="table table-sm table-light" value="#{empleadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#"/>
+                </f:facet>
+                <h:outputText value="#{item.idEmpleado}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_nombre}"/>
+                </f:facet>
+                <h:outputText value="#{item.nombre}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="A.Paterno"/>
+                </f:facet>
+                <h:outputText value="#{item.apellidoP}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="A.Materno"/>
+                </f:facet>
+                <h:outputText value="#{item.apellidoM}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="Fecha Nacimiento"/>
+                </f:facet>
+                <h:outputText value="#{item.fechaNacimiento}">
+                  <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:outputText>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_domicilio}"/>
+                </f:facet>
+                <h:outputText value="#{item.domicilio}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_telefono}"/>
+                </f:facet>
+                <h:outputText value="#{item.telefono}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_correo}"/>
+                </f:facet>
+                <h:outputText value="#{item.correo}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_curp}"/>
+                </f:facet>
+                <h:outputText value="#{item.curp}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="RFC"/>
+                </f:facet>
+                <h:outputText value="#{item.rfc}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListEmpleadoTitle_edad}"/>
+                </f:facet>
+                <h:outputText value="#{item.edad}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="Usuario"/>
+                </f:facet>
+                <h:outputText value="#{item.idUsuario}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="Acciones"/>
+                </f:facet>
+                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{empleadoController.prepareView}" />
+                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{empleadoController.prepareEdit}" />
+                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{empleadoController.destroy}"/>
+              </h:column>
+            </h:dataTable>
+          </h:panelGroup>
+        </h:form>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="modalCreate">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" align="center">
+              <h4 class="modal-title">Registro de empleados</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
-            <!-- The Modal -->
-            <div class="modal fade" id="modalCreate">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
 
-                        <!-- Modal Header -->
-                        <div class="modal-header" align="center">
-                            <h4 class="modal-title">Registro de empleados</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-
-                            <h:form>
-                                <div align="center" >
-                                    <h:panelGrid columns="2">
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_nombre}" for="nombre" />
-                                        <h:inputText class="form-control" id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.CreateEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_nombre}"/>
-                                        <h:outputLabel value="Apellido Paterno: " for="apellidoP" />
-                                        <h:inputText class="form-control" id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.CreateEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_apellidoP}"/>
-                                        <h:outputLabel value="Apellido Materno: " for="apellidoM" />
-                                        <h:inputText class="form-control" id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.CreateEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_apellidoM}"/>
-                                        <h:outputLabel value="Fecha de Nacimiento: " for="fechaNacimiento" />
-                                        <h:inputText class="form-control" id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.CreateEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_fechaNacimiento}">
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </h:inputText>
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_domicilio}" for="domicilio" />
-                                        <h:inputText class="form-control" id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.CreateEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_domicilio}"/>
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_telefono}" for="telefono" />
-                                        <h:inputText class="form-control" id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.CreateEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_telefono}"/>
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_correo}" for="correo" />
-                                        <h:inputText class="form-control" id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.CreateEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_correo}"/>
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_curp}" for="curp" />
-                                        <h:inputText class="form-control" id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.CreateEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_curp}"/>
-                                        <h:outputLabel value="RFC" for="rfc" />
-                                        <h:inputText class="form-control" id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.CreateEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_rfc}"/>
-                                        <h:outputLabel value="#{bundle.CreateEmpleadoLabel_edad}" for="edad" />
-                                        <h:inputText class="form-control" id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.CreateEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_edad}"/>
-                                        <h:outputLabel value="Usuario" for="idUsuario" />
-                                        <h:selectOneMenu class="form-control" id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.CreateEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_idUsuario}">
-                                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                                        </h:selectOneMenu>
-                                    </h:panelGrid>
-                                    <br />
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{empleadoController.create}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
-                                    <br></br>
-                                    <br></br>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <h:commandLink action="#{empleadoController.prepareList}" value="Ver Lista de Empleados" immediate="true"/>
-                                    </div>
-                                </div>
-                            </h:form>
-
-                        </div>
-                    </div>
+              <h:form id="createempleado">
+                <div align="center" >
+                  <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_nombre}" for="nombre" />
+                    <h:inputText class="form-control" id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.CreateEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="Apellido Paterno: " for="apellidoP" />
+                    <h:inputText class="form-control" id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.CreateEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_apellidoP}"/>
+                    <h:outputLabel value="Apellido Materno: " for="apellidoM" />
+                    <h:inputText class="form-control" id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.CreateEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_apellidoM}"/>
+                    <h:outputLabel value="Fecha de Nacimiento: " for="fechaNacimiento" />
+                    <h:inputText class="form-control" id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.CreateEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_fechaNacimiento}">
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_domicilio}" for="domicilio" />
+                    <h:inputText class="form-control" id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.CreateEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_domicilio}"/>
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_telefono}" for="telefono" />
+                    <h:inputText class="form-control" id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.CreateEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_correo}" for="correo" />
+                    <h:inputText class="form-control" id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.CreateEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_correo}"/>
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_curp}" for="curp" />
+                    <h:inputText class="form-control" id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.CreateEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_curp}"/>
+                    <h:outputLabel value="RFC" for="rfc" />
+                    <h:inputText class="form-control" id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.CreateEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_rfc}"/>
+                    <h:outputLabel value="#{bundle.CreateEmpleadoLabel_edad}" for="edad" />
+                    <h:inputText class="form-control" id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.CreateEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_edad}"/>
+                    <h:outputLabel value="Usuario" for="idUsuario" />
+                    <h:selectOneMenu class="form-control" id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.CreateEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateEmpleadoRequiredMessage_idUsuario}">
+                      <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                  </h:panelGrid>
+                  <br />
+                  <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{empleadoController.create}" onclick="return validateForm();" />
+                  <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                  <br></br>
+                  <br></br>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <h:commandLink action="#{empleadoController.prepareList}" value="Ver Lista de Empleados" immediate="true"/>
+                  </div>
                 </div>
+              </h:form>
+
             </div>
-        </ui:define>
-    </ui:composition>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validateForm() {
+          var retorno = true;
+          if ($("#createempleado\\:nombre").val() === '') {
+            alert('Nombre no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:apellidoP").val() === '') {
+            alert('Apellido Paterno no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:apellidoM").val() === '') {
+            alert('Apellido Materno no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:domicilio").val() === '') {
+            alert('Domicilio no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:telefono").val() === '') {
+            alert('Teléfono no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:correo").val() === '') {
+            alert('Correo no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:curp").val() === '') {
+            alert('CURP no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:rfc").val() === '') {
+            alert('RFC no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:edad").val() === '') {
+            alert('Edad no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createempleado\\:idUsuario option:selected").val() === '') {
+            alert('ID Usuario no puede estar vacío...');
+            retorno = false;
+          }
+          return retorno;
+        }
+      </script>
+    </ui:define>
+  </ui:composition>
 
 </html>

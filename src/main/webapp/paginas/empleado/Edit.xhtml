@@ -5,64 +5,110 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditEmpleadoTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <div class="main">
-                <div class="alert alert-dismissible" style="background-color: white">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </div>
-                <div style="background-color: white">
-                    <br></br>
-                    <h4 align="center">Editar Información del rol</h4>
-                    <br></br>
-                </div>
-                <br></br>
-                <div style="background-color: white" align="center">
-                    <br></br>
-                    
-                    <h:form>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_nombre}" for="nombre" />
-                            <h:inputText class="form-control" id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.EditEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombre}"/>
-                            <h:outputLabel value="Apellido Paterno:" for="apellidoP" />
-                            <h:inputText class="form-control" id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.EditEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoP}"/>
-                            <h:outputLabel value="Apellido Materno:" for="apellidoM" />
-                            <h:inputText class="form-control"  id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.EditEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoM}"/>
-                            <h:outputLabel value="Fecha de Nacimiento:" for="fechaNacimiento" />
-                            <h:inputText class="form-control" id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.EditEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fechaNacimiento}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:inputText>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_domicilio}" for="domicilio" />
-                            <h:inputText class="form-control" id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.EditEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_domicilio}"/>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
-                            <h:inputText class="form-control" id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_telefono}"/>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_correo}" for="correo" />
-                            <h:inputText class="form-control" id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.EditEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_correo}"/>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_curp}" for="curp" />
-                            <h:inputText class="form-control" id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.EditEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_curp}"/>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_rfc}" for="rfc" />
-                            <h:inputText class="form-control" id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.EditEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_rfc}"/>
-                            <h:outputLabel value="#{bundle.EditEmpleadoLabel_edad}" for="edad" />
-                            <h:inputText class="form-control" id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.EditEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_edad}"/>
-                            <h:outputLabel value="Usuario" for="idUsuario" />
-                            <h:selectOneMenu class="form-control" id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.EditEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idUsuario}">
-                                <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
-                            </h:selectOneMenu>
-                        </h:panelGrid>
-                        <br />
-                        <h:commandLink class="btn btn-sm btn-info" action="#{empleadoController.update}" value="Aceptar"/>
-                        &nbsp; 
-                        <h:commandLink class="btn btn-sm btn-danger" action="#{empleadoController.prepareList()}" value="Cancelar"/>
-                        <br />
-                        <br />
-                    </h:form>
-                </div>
-            </div>
-        </ui:define>
-    </ui:composition>
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.EditEmpleadoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <div class="main">
+        <div class="alert alert-dismissible" style="background-color: white">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </div>
+        <div style="background-color: white">
+          <br></br>
+          <h4 align="center">Editar Información del rol</h4>
+          <br></br>
+        </div>
+        <br></br>
+        <div style="background-color: white" align="center">
+          <br></br>
+
+          <h:form id="editempleado">
+            <h:panelGrid columns="2">
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_nombre}" for="nombre" />
+              <h:inputText class="form-control" id="nombre" value="#{empleadoController.selected.nombre}" title="#{bundle.EditEmpleadoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombre}"/>
+              <h:outputLabel value="Apellido Paterno:" for="apellidoP" />
+              <h:inputText class="form-control" id="apellidoP" value="#{empleadoController.selected.apellidoP}" title="#{bundle.EditEmpleadoTitle_apellidoP}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoP}"/>
+              <h:outputLabel value="Apellido Materno:" for="apellidoM" />
+              <h:inputText class="form-control"  id="apellidoM" value="#{empleadoController.selected.apellidoM}" title="#{bundle.EditEmpleadoTitle_apellidoM}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoM}"/>
+              <h:outputLabel value="Fecha de Nacimiento:" for="fechaNacimiento" />
+              <h:inputText class="form-control" id="fechaNacimiento" value="#{empleadoController.selected.fechaNacimiento}" title="#{bundle.EditEmpleadoTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fechaNacimiento}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+              </h:inputText>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_domicilio}" for="domicilio" />
+              <h:inputText class="form-control" id="domicilio" value="#{empleadoController.selected.domicilio}" title="#{bundle.EditEmpleadoTitle_domicilio}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_domicilio}"/>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_telefono}" for="telefono" />
+              <h:inputText class="form-control" id="telefono" value="#{empleadoController.selected.telefono}" title="#{bundle.EditEmpleadoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_telefono}"/>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_correo}" for="correo" />
+              <h:inputText class="form-control" id="correo" value="#{empleadoController.selected.correo}" title="#{bundle.EditEmpleadoTitle_correo}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_correo}"/>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_curp}" for="curp" />
+              <h:inputText class="form-control" id="curp" value="#{empleadoController.selected.curp}" title="#{bundle.EditEmpleadoTitle_curp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_curp}"/>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_rfc}" for="rfc" />
+              <h:inputText class="form-control" id="rfc" value="#{empleadoController.selected.rfc}" title="#{bundle.EditEmpleadoTitle_rfc}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_rfc}"/>
+              <h:outputLabel value="#{bundle.EditEmpleadoLabel_edad}" for="edad" />
+              <h:inputText class="form-control" id="edad" value="#{empleadoController.selected.edad}" title="#{bundle.EditEmpleadoTitle_edad}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_edad}"/>
+              <h:outputLabel value="Usuario" for="idUsuario" />
+              <h:selectOneMenu class="form-control" id="idUsuario" value="#{empleadoController.selected.idUsuario}" title="#{bundle.EditEmpleadoTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idUsuario}">
+                <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+              </h:selectOneMenu>
+            </h:panelGrid>
+            <br />
+            <h:commandLink class="btn btn-sm btn-info" action="#{empleadoController.update}" value="Aceptar" onclick="return validateForm();" />
+            &nbsp; 
+            <h:commandLink class="btn btn-sm btn-danger" action="#{empleadoController.prepareList()}" value="Cancelar"/>
+            <br />
+            <br />
+          </h:form>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validateForm() {
+          var retorno = true;
+          if ($("#editempleado\\:nombre").val() === '') {
+            alert('Nombre no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:apellidoP").val() === '') {
+            alert('Apellido Paterno no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:apellidoM").val() === '') {
+            alert('Apellido Materno no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:domicilio").val() === '') {
+            alert('Domicilio no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:telefono").val() === '') {
+            alert('Teléfono no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:correo").val() === '') {
+            alert('Correo no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:curp").val() === '') {
+            alert('CURP no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:rfc").val() === '') {
+            alert('RFC no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:edad").val() === '') {
+            alert('Edad no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editempleado\\:idUsuario option:selected").val() === '') {
+            alert('ID Usuario no puede estar vacío...');
+            retorno = false;
+          }
+          return retorno;
+        }
+      </script>
+    </ui:define>
+  </ui:composition>
 
 </html>
