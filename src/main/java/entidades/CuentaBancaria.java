@@ -52,7 +52,7 @@ public class CuentaBancaria implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "numero_tarjeta")
-    private long numeroTarjeta;
+    private Long numeroTarjeta;
     
     @Basic(optional = false)
     @NotNull
@@ -72,7 +72,7 @@ public class CuentaBancaria implements Serializable {
         this.idCuenta = idCuenta;
     }
 
-    public CuentaBancaria(Integer idCuenta, String nombreBanco, long numeroTarjeta, int cvc, Date fechaExpiracion) {
+    public CuentaBancaria(Integer idCuenta, String nombreBanco, Long numeroTarjeta, int cvc, Date fechaExpiracion) {
         this.idCuenta = idCuenta;
         this.nombreBanco = nombreBanco;
         this.numeroTarjeta = numeroTarjeta;
@@ -96,11 +96,11 @@ public class CuentaBancaria implements Serializable {
         this.nombreBanco = nombreBanco;
     }
 
-    public long getNumeroTarjeta() {
+    public Long getNumeroTarjeta() {
         return numeroTarjeta;
     }
 
-    public void setNumeroTarjeta(long numeroTarjeta) {
+    public void setNumeroTarjeta(Long numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
 
@@ -142,7 +142,11 @@ public class CuentaBancaria implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.CuentaBancaria[ idCuenta=" + idCuenta + " ]";
+        return "CuentaBancaria{" + "idCuenta=" + idCuenta + ", nombreBanco=" + nombreBanco + ", numeroTarjeta=" + numeroTarjeta + ", cvc=" + cvc + ", fechaExpiracion=" + fechaExpiracion + '}';
     }
+
+    
+    
+    
 
 }

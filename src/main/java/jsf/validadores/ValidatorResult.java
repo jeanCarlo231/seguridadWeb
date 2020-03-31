@@ -12,11 +12,7 @@ package jsf.validadores;
 public class ValidatorResult {
     
     private String error;
-    private boolean valid=true;
-
-    public ValidatorResult(){
-        this.valid=true;
-    }
+    private boolean valid;
     
     public ValidatorResult(String error, boolean valid) {
         this.error = error;
