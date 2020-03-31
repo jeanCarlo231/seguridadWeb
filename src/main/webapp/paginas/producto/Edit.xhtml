@@ -5,45 +5,67 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.EditProductoTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <div class="main">
-                <div class="alert alert-dismissible" style="background-color: white">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </div>
-                <div style="background-color: white">
-                    <br></br>
-                    <h4 align="center">Editar Información de producto</h4>
-                    <br></br>
-                </div>
-                <br></br>
-                <div style="background-color: white" align="center">
-                    <br></br>
-                <h:form>
-                    <h:panelGrid columns="2"> 
-                        <h:outputLabel value="#{bundle.EditProductoLabel_nombreProducto}" for="nombreProducto" />
-                        <h:inputText id="nombreProducto" value="#{productoController.selected.nombreProducto}" title="#{bundle.EditProductoTitle_nombreProducto}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_nombreProducto}"/>
-                        <h:outputLabel value="#{bundle.EditProductoLabel_descripcion}" for="descripcion" />
-                        <h:inputText id="descripcion" value="#{productoController.selected.descripcion}" title="#{bundle.EditProductoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_descripcion}"/>
-                        <h:outputLabel value="#{bundle.EditProductoLabel_precioUnitario}" for="precioUnitario" />
-                        <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.EditProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_precioUnitario}"/>
-                        <h:outputLabel value="#{bundle.EditProductoLabel_status}" for="status" />
-                        <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.EditProductoTitle_status}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_status}"/>     
-                    </h:panelGrid>
-                    <br />
-                        <h:commandLink class="btn btn-sm btn-info" action="#{productoController.update}" value="Aceptar"/>
-                        &nbsp; 
-                        <h:commandLink class="btn btn-sm btn-danger" action="#{productoController.prepareList()}" value="Cancelar"/>
-                        <br />
-                        <br />
-                </h:form>
-            </div>
-            </div>
-        </ui:define>
-    </ui:composition>
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.EditProductoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <div class="main">
+        <div class="alert alert-dismissible" style="background-color: white">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </div>
+        <div style="background-color: white">
+          <br></br>
+          <h4 align="center">Editar Información de producto</h4>
+          <br></br>
+        </div>
+        <br></br>
+        <div style="background-color: white" align="center">
+          <br></br>
+          <h:form id="editproducto">
+            <h:panelGrid columns="2"> 
+              <h:outputLabel value="#{bundle.EditProductoLabel_nombreProducto}" for="nombreProducto" />
+              <h:inputText id="nombreProducto" value="#{productoController.selected.nombreProducto}" title="#{bundle.EditProductoTitle_nombreProducto}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_nombreProducto}"/>
+              <h:outputLabel value="#{bundle.EditProductoLabel_descripcion}" for="descripcion" />
+              <h:inputText id="descripcion" value="#{productoController.selected.descripcion}" title="#{bundle.EditProductoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_descripcion}"/>
+              <h:outputLabel value="#{bundle.EditProductoLabel_precioUnitario}" for="precioUnitario" />
+              <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.EditProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_precioUnitario}"/>
+              <h:outputLabel value="#{bundle.EditProductoLabel_status}" for="status" />
+              <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.EditProductoTitle_status}" required="true" requiredMessage="#{bundle.EditProductoRequiredMessage_status}"/>     
+            </h:panelGrid>
+            <br />
+            <h:commandLink class="btn btn-sm btn-info" action="#{productoController.update}" value="Aceptar" onclick="return validateForm();" />
+            &nbsp; 
+            <h:commandLink class="btn btn-sm btn-danger" action="#{productoController.prepareList()}" value="Cancelar"/>
+            <br />
+            <br />
+          </h:form>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validateForm() {
+          var retorno = true;
+          if ($("#editproducto\\:nombreProducto").val() === '') {
+            alert('Nombre del producto puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editproducto\\:descripcion").val() === '') {
+            alert('Descripción no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editproducto\\:precioUnitario").val() === '') {
+            alert('Precio unitario no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#editproducto\\:status").val() === '') {
+            alert('Status no puede estar vacío...');
+            retorno = false;
+          }
+          return retorno;
+        }
+      </script>
+    </ui:define>
+  </ui:composition>
 
 </html>
