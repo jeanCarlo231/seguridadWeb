@@ -23,8 +23,7 @@ public class RolValidator {
         if(rol.getNombre().length()<=3 || rol.getNombre().length()>=21){
             return new ValidatorResult("El rol debe tener mínimo 4 caracteres y máximo 20", false);
         }
-        boolean esAlfabetico = Pattern.matches("^[a-zA-Z]*$", rol.getNombre());
-        if(!esAlfabetico){
+        if(!Common.isAlphabetic(rol.getNombre())){
             return new ValidatorResult("El nombre debe ser alfabetico", false);
         }
         return new ValidatorResult(null, true);

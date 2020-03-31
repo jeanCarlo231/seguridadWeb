@@ -42,19 +42,23 @@ public class CuentaBancaria implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_cuenta")
     private Integer idCuenta;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nombre_banco")
     private String nombreBanco;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "numero_tarjeta")
-    private int numeroTarjeta;
+    private long numeroTarjeta;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "cvc")
     private int cvc;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_expiracion")
@@ -68,7 +72,7 @@ public class CuentaBancaria implements Serializable {
         this.idCuenta = idCuenta;
     }
 
-    public CuentaBancaria(Integer idCuenta, String nombreBanco, int numeroTarjeta, int cvc, Date fechaExpiracion) {
+    public CuentaBancaria(Integer idCuenta, String nombreBanco, long numeroTarjeta, int cvc, Date fechaExpiracion) {
         this.idCuenta = idCuenta;
         this.nombreBanco = nombreBanco;
         this.numeroTarjeta = numeroTarjeta;
@@ -92,11 +96,11 @@ public class CuentaBancaria implements Serializable {
         this.nombreBanco = nombreBanco;
     }
 
-    public int getNumeroTarjeta() {
+    public long getNumeroTarjeta() {
         return numeroTarjeta;
     }
 
-    public void setNumeroTarjeta(int numeroTarjeta) {
+    public void setNumeroTarjeta(long numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
     }
 
