@@ -23,7 +23,7 @@
                 <br></br>
                 <div style="background-color: white" align="center">
                     <br></br>
-                    <h:form>
+                    <h:form id="edituser">
                         <h:panelGrid columns="2">
                             <h:outputLabel value="#{bundle.EditUsuarioLabel_usuario}" for="usuario" />
                             <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.EditUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_usuario}"/>
@@ -37,7 +37,7 @@
                             </h:selectOneMenu>
                         </h:panelGrid>
                         <br />
-                        <h:commandLink class="btn btn-sm btn-info" action="#{usuarioController.update}" value="Aceptar"/>
+                        <h:commandLink class="btn btn-sm btn-info" action="#{usuarioController.update}" value="Aceptar"  onclick="return validateForm();"/>
                         &nbsp; 
                         <h:commandLink class="btn btn-sm btn-danger" action="#{usuarioController.prepareList()}" value="Cancelar"/>
                         <br />
@@ -45,6 +45,28 @@
                     </h:form>
                 </div>
             </div>
+                        <script type="text/javascript">
+    function validateForm(){
+      var retorno = true;
+      if($("#edituser\\:usuario").val() === ''){
+        alert('Usuario no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:contraseña").val() === ''){
+        alert('Contraseña no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:activo").val() === ''){
+        alert('Activo no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#edituser\\:idRol option:selected").val() === ''){
+        alert('El rol no puede estar sin selección...');
+        retorno = false;
+      }
+      return retorno;
+    }
+  </script>
         </ui:define>
     </ui:composition>
 

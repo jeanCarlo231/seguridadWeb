@@ -109,9 +109,18 @@ public class RolController implements Serializable {
 
     public String update() {
         try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage("¡Rol editado con exito!");
-            return "List";
+            System.out.println(current);
+            ValidatorResult result = RolValidator.validar(current);
+            assert(result!=null);
+            if(result.isValid()){
+                getFacade().edit(current);
+                JsfUtil.addSuccessMessage("¡Rol editado con exito!");
+            }else{
+                assert(result.getError()!=null);
+                JsfUtil.addErrorMessage(result.getError());
+                return "Edit";
+            }
+            return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
             return "List";

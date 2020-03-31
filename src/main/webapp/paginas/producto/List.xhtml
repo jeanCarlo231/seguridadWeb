@@ -5,127 +5,149 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListProductoTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <div class="main">
-                <div class="alert alert-dismissible" style="background-color: white">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </div>
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ListProductoTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <div class="main">
+        <div class="alert alert-dismissible" style="background-color: white">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </div>
 
-                <div style="background-color: white">
-                    <br></br>
-                    <h1 align="center">Productos</h1>
-                    <br></br>
-                </div>
-                <div class="card">
-                    <div class="card-body">
+        <div style="background-color: white">
+          <br></br>
+          <h1 align="center">Productos</h1>
+          <br></br>
+        </div>
+        <div class="card">
+          <div class="card-body">
 
-                        <p align="right">
-                            <button action="#{productoController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
-                                Nuevo Producto
-                            </button>
-                        </p>
-                    </div>
-                </div>
-                <br></br>
-                <h:form styleClass="jsfcrud_list_form">
-                    <h:outputText escape="false" value="#{bundle.ListProductoEmpty}" rendered="#{productoController.items.rowCount == 0}"/>
-                    <h:panelGroup rendered="#{productoController.items.rowCount > 0}">
-                        <h:outputText value="#{productoController.pagination.pageFirstItem + 1}..#{productoController.pagination.pageLastItem + 1}/#{productoController.pagination.itemsCount}"/>&nbsp;
-                        <h:commandLink action="#{productoController.previous}" value="#{bundle.Previous} #{productoController.pagination.pageSize}" rendered="#{productoController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{productoController.next}" value="#{bundle.Next} #{productoController.pagination.pageSize}" rendered="#{productoController.pagination.hasNextPage}"/>&nbsp;
-                        <h:dataTable class="table table-sm table-light" value="#{productoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProductoTitle_idProducto}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idProducto}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProductoTitle_nombreProducto}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreProducto}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProductoTitle_descripcion}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.descripcion}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProductoTitle_precioUnitario}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.precioUnitario}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListProductoTitle_status}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.status}"/>
-                            </h:column>
+            <p align="right">
+              <button action="#{productoController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                Nuevo Producto
+              </button>
+            </p>
+          </div>
+        </div>
+        <br></br>
+        <h:form styleClass="jsfcrud_list_form">
+          <h:outputText escape="false" value="#{bundle.ListProductoEmpty}" rendered="#{productoController.items.rowCount == 0}"/>
+          <h:panelGroup rendered="#{productoController.items.rowCount > 0}">
+            <h:outputText value="#{productoController.pagination.pageFirstItem + 1}..#{productoController.pagination.pageLastItem + 1}/#{productoController.pagination.itemsCount}"/>&nbsp;
+            <h:commandLink action="#{productoController.previous}" value="#{bundle.Previous} #{productoController.pagination.pageSize}" rendered="#{productoController.pagination.hasPreviousPage}"/>&nbsp;
+            <h:commandLink action="#{productoController.next}" value="#{bundle.Next} #{productoController.pagination.pageSize}" rendered="#{productoController.pagination.hasNextPage}"/>&nbsp;
+            <h:dataTable class="table table-sm table-light" value="#{productoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListProductoTitle_idProducto}"/>
+                </f:facet>
+                <h:outputText value="#{item.idProducto}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListProductoTitle_nombreProducto}"/>
+                </f:facet>
+                <h:outputText value="#{item.nombreProducto}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListProductoTitle_descripcion}"/>
+                </f:facet>
+                <h:outputText value="#{item.descripcion}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListProductoTitle_precioUnitario}"/>
+                </f:facet>
+                <h:outputText value="#{item.precioUnitario}"/>
+              </h:column>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="#{bundle.ListProductoTitle_status}"/>
+                </f:facet>
+                <h:outputText value="#{item.status}"/>
+              </h:column>
 
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Acciones"/>
-                                </f:facet>
-                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{productoController.prepareView}" />
-                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{productoController.prepareEdit}" />
-                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{productoController.destroy}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:panelGroup>
-                </h:form>
+              <h:column>
+                <f:facet name="header">
+                  <h:outputText value="Acciones"/>
+                </f:facet>
+                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{productoController.prepareView}" />
+                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{productoController.prepareEdit}" />
+                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{productoController.destroy}"/>
+              </h:column>
+            </h:dataTable>
+          </h:panelGroup>
+        </h:form>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="modalCreate">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" align="center">
+              <h4 class="modal-title">Registro de productos</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
-            <!-- The Modal -->
-            <div class="modal fade" id="modalCreate">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
 
-                        <!-- Modal Header -->
-                        <div class="modal-header" align="center">
-                            <h4 class="modal-title">Registro de productos</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-
-                            <h:form>
-                                <div align="center" >
-                                    <h:panelGrid columns="2">
-                                        <h:outputLabel value="Nombre del Producto: " for="nombreProducto" />
-                                        <h:inputText id="nombreProducto" value="#{productoController.selected.nombreProducto}" title="#{bundle.CreateProductoTitle_nombreProducto}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_nombreProducto}"/>
-                                        <h:outputLabel value="#{bundle.CreateProductoLabel_descripcion}" for="descripcion" />
-                                        <h:inputText id="descripcion" value="#{productoController.selected.descripcion}" title="#{bundle.CreateProductoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_descripcion}"/>
-                                        <h:outputLabel value="Precio Unitario: " for="precioUnitario" />
-                                        <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.CreateProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_precioUnitario}"/>
-                                        <h:outputLabel value="#{bundle.CreateProductoLabel_status}" for="status" />
-                                        <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.CreateProductoTitle_status}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_status}"/>                   
-                                    </h:panelGrid>
-                                    <br />
-                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{productoController.create}" />
-                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
-                                    <br></br>
-                                    <br></br>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <h:commandLink action="#{productoController.prepareList}" value="Ver Lista de Productos" immediate="true"/>
-                                    </div>
-                                </div>
-                            </h:form>
-
-                        </div>
-                    </div>
+              <h:form id="createproducto">
+                <div align="center" >
+                  <h:panelGrid columns="2">
+                    <h:outputLabel value="Nombre del Producto: " for="nombreProducto" />
+                    <h:inputText id="nombreProducto" value="#{productoController.selected.nombreProducto}" title="#{bundle.CreateProductoTitle_nombreProducto}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_nombreProducto}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{productoController.selected.descripcion}" title="#{bundle.CreateProductoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="Precio Unitario: " for="precioUnitario" />
+                    <h:inputText id="precioUnitario" value="#{productoController.selected.precioUnitario}" title="#{bundle.CreateProductoTitle_precioUnitario}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_precioUnitario}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{productoController.selected.status}" title="#{bundle.CreateProductoTitle_status}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_status}"/>                   
+                  </h:panelGrid>
+                  <br />
+                  <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{productoController.create}" onclick="return validateForm();" />
+                  <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                  <br></br>
+                  <br></br>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <h:commandLink action="#{productoController.prepareList}" value="Ver Lista de Productos" immediate="true"/>
+                  </div>
                 </div>
+              </h:form>
+
             </div>
-        </ui:define>
-    </ui:composition>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validateForm() {
+          var retorno = true;
+          if ($("#createproducto\\:nombreProducto").val() === '') {
+            alert('Nombre del producto puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createproducto\\:descripcion").val() === '') {
+            alert('Descripción no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createproducto\\:precioUnitario").val() === '') {
+            alert('Precio unitario no puede estar vacío...');
+            retorno = false;
+          }
+          if ($("#createproducto\\:status").val() === '') {
+            alert('Status no puede estar vacío...');
+            retorno = false;
+          }
+          return retorno;
+        }
+      </script>
+    </ui:define>
+  </ui:composition>
 
 </html>

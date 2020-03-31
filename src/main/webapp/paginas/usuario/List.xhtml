@@ -3,144 +3,162 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-  <ui:composition template="/template.xhtml">
-    <ui:define name="title">
-      <h:outputText value="#{bundle.ListUsuarioTitle}"></h:outputText>
-    </ui:define>
-    <ui:define name="body">
-      <div class="main">
-        <div class="alert alert-dismissible" style="background-color: white">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-        </div>
-
-        <div style="background-color: white">
-          <br></br>
-          <h1 align="center">Usuarios</h1>
-          <br></br>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-
-            <p align="right">
-              <button action="#{usuarioController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
-                Nuevo Usuario
-              </button>
-            </p>
-          </div>
-        </div>
-        <h:form styleClass="jsfcrud_list_form">
-
-          <br></br>
-          <h:outputText escape="false" value="#{bundle.ListUsuarioEmpty}" rendered="#{usuarioController.items.rowCount == 0}"/>
-          <h:panelGroup rendered="#{usuarioController.items.rowCount > 0}">
-            <h:outputText value="#{usuarioController.pagination.pageFirstItem + 1}..#{usuarioController.pagination.pageLastItem + 1}/#{usuarioController.pagination.itemsCount}"/>&nbsp;
-            <h:commandLink action="#{usuarioController.previous}" value="#{bundle.Previous} #{usuarioController.pagination.pageSize}" rendered="#{usuarioController.pagination.hasPreviousPage}"/>&nbsp;
-            <h:commandLink action="#{usuarioController.next}" value="#{bundle.Next} #{usuarioController.pagination.pageSize}" rendered="#{usuarioController.pagination.hasNextPage}"/>&nbsp;
-
-
-
-            <h:dataTable class="table table-sm table-light" value="#{usuarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="#"/>
-                </f:facet>
-                <h:outputText value="#{item.idUsuario}"/>
-              </h:column>
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="Usuario"/>
-                </f:facet>
-                <h:outputText value="#{item.usuario}"/>
-              </h:column>
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="Contraseña"/>
-                </f:facet>
-                <h:outputText value="#{item.contraseña}"/>
-              </h:column>
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="Status"/>
-                </f:facet>
-                <h:outputText value="#{item.activo}"/>
-              </h:column>
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="Cargo"/>
-                </f:facet>
-                <h:outputText value="#{item.idRol.nombre}"/>
-              </h:column>
-              <h:column>
-                <f:facet name="header">
-                  <h:outputText value="Acciones"/>
-                </f:facet>
-                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{usuarioController.prepareView}"/>
-                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{usuarioController.prepareEdit}" />
-                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{usuarioController.destroy}"/>
-
-              </h:column>
-            </h:dataTable>
-
-          </h:panelGroup>
-
-        </h:form>
-      </div>
-
-
-
-      <!-- The Modal -->
-      <div class="modal fade" id="modalCreate">
-        <div class="modal-dialog">
-          <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header" align="center">
-              <h4 class="modal-title">Registro de usuarios</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-
-              <h:form>
-                <div align="center" >
-                  <p:messages>
-                    <p:autoUpdate />
-                  </p:messages>
-                  <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
-                    <p:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"><p:clientValidator /></p:inputText>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_contraseña}" for="contraseña" />
-                    <p:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_contraseña}"><p:clientValidator /></p:inputText>
-                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
-                    <p:inputText class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_activo}"><f:validateDoubleRange minimum="0" maximum="1" /><p:clientValidator /></p:inputText>
-                    <h:outputLabel value="Rol:" for="idRol" />
-                    <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idRol}">
-                      <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
-                      <p:clientValidator />
-                    </h:selectOneMenu>
-                  </h:panelGrid>
-                  <br></br>
-                  <p:commandButton class="btn btn-sm btn-success" value="Guardar" action="#{usuarioController.create}" validateClient="true" ajax="false"/>
-                  <p:commandButton class="btn btn-sm btn-danger" data-dismiss="modal" value="Cancelar" ajax="false"/>
-                  <br></br>
-                  <br></br>
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <h:commandLink action="#{usuarioController.prepareList}" value="Ver Lista de Usuarios" immediate="true"/>
-                  </div>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="main">
+                <div class="alert alert-dismissible" style="background-color: white">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>!Mensajes!</strong><br></br> <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </div>
-              </h:form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ui:define>
-  </ui:composition>
 
+                <div style="background-color: white">
+                    <br></br>
+                    <h1 align="center">Usuarios</h1>
+                    <br></br>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <p align="right">
+                            <button action="#{usuarioController.prepareCreate()}" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalCreate">
+                                Nuevo Usuario
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <h:form styleClass="jsfcrud_list_form">
+
+                    <br></br>
+                    <h:outputText escape="false" value="#{bundle.ListUsuarioEmpty}" rendered="#{usuarioController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{usuarioController.items.rowCount > 0}">
+                        <h:outputText value="#{usuarioController.pagination.pageFirstItem + 1}..#{usuarioController.pagination.pageLastItem + 1}/#{usuarioController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{usuarioController.previous}" value="#{bundle.Previous} #{usuarioController.pagination.pageSize}" rendered="#{usuarioController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{usuarioController.next}" value="#{bundle.Next} #{usuarioController.pagination.pageSize}" rendered="#{usuarioController.pagination.hasNextPage}"/>&nbsp;
+
+
+
+                        <h:dataTable class="table table-sm table-light" value="#{usuarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idUsuario}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Usuario"/>
+                                </f:facet>
+                                <h:outputText value="#{item.usuario}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Contraseña"/>
+                                </f:facet>
+                                <h:outputText value="#{item.contraseña}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Status"/>
+                                </f:facet>
+                                <h:outputText value="#{item.activo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cargo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idRol.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Acciones"/>
+                                </f:facet>
+                                <h:commandLink class="btn btn-sm btn-outline-info fas fa-eye" action="#{usuarioController.prepareView}"/>
+                                <h:commandLink class="btn btn-sm btn-outline-success far fa-edit" action="#{usuarioController.prepareEdit}" />
+                                <h:commandLink class="btn btn-sm btn-outline-danger fas fa-trash-alt" onclick="return ConfirmDelete()" action="#{usuarioController.destroy}"/>
+
+                            </h:column>
+                        </h:dataTable>
+
+                    </h:panelGroup>
+
+                </h:form>
+            </div>
+
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="modalCreate">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" align="center">
+                            <h4 class="modal-title">Registro de usuarios</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <h:form id="createuser">
+                                <div align="center" >
+
+                                    <h:panelGrid columns="2">
+
+                                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
+                                        <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>
+                                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_contraseña}" for="contraseña" />
+                                        <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_contraseña}"/>
+                                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
+                                        <h:inputText class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_activo}"/>
+                                        <h:outputLabel value="Rol:" for="idRol" />
+                                        <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idRol}">
+                                          <f:selectItems value="#{rolController.itemsAvailableSelectOne}" />
+                                        </h:selectOneMenu>
+                                    </h:panelGrid>
+                                    <br></br>
+                                    <h:commandLink class="btn btn-sm btn-success" value="Guardar" action="#{usuarioController.create}" onclick="return validateForm();"/>
+                                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <br></br>
+                                    <br></br>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <h:commandLink action="#{usuarioController.prepareList}" value="Ver Lista de Usuarios" immediate="true"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <script type="text/javascript">
+    function validateForm(){
+      var retorno = true;
+      if($("#createuser\\:usuario").val() === ''){
+        alert('Usuario no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#createuser\\:contraseña").val() === ''){
+        alert('Contraseña no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#createuser\\:activo").val() === ''){
+        alert('Activo no puede estar vacío...');
+        retorno = false;
+      }
+      if($("#createuser\\:idRol option:selected").val() === ''){
+        alert('El rol no puede estar sin selección...');
+        retorno = false;
+      }
+      return retorno;
+    }
+  </script>
+        </ui:define>
+    </ui:composition>
 </html>
