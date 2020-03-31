@@ -17,6 +17,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import jsf.validadores.UsuarioValidator;
+import jsf.validadores.ValidatorResult;
 
 @Named("usuarioController")
 @SessionScoped
@@ -81,8 +83,17 @@ public class UsuarioController implements Serializable {
 
     public String create() {
         try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage("¡Usuario creado con exito!");
+            System.out.println(current);
+            ValidatorResult result = UsuarioValidator.validar(current);
+            assert(result!=null);
+            if(result.isValid()){
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage("¡Usuario creado con exito!");
+            }else{
+                assert(result.getError()!=null);
+                JsfUtil.addErrorMessage(result.getError());
+                return "List";
+            }
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
@@ -98,9 +109,18 @@ public class UsuarioController implements Serializable {
 
     public String update() {
         try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage("¡Usuario editado con exito!");
-            return "List";
+            System.out.println(current);
+            ValidatorResult result = UsuarioValidator.validar(current);
+            assert(result!=null);
+            if(result.isValid()){
+                getFacade().edit(current);
+                JsfUtil.addSuccessMessage("¡Usuario editado con exito!");
+            }else{
+                assert(result.getError()!=null);
+                JsfUtil.addErrorMessage(result.getError());
+                return "Edit";
+            }
+            return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
             return "List";
