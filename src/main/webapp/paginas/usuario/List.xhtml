@@ -108,17 +108,19 @@
 
                             <h:form>
                                 <div align="center" >
-
                                     <h:panelGrid columns="2">
-
                                         <h:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
-                                        <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>
+                                        <h:inputText class="form-control" id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="El campo usuario es obligatorio"/>
                                         <h:outputLabel value="#{bundle.CreateUsuarioLabel_contraseña}" for="contraseña" />
-                                        <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_contraseña}"/>
-                                        <h:outputLabel value="#{bundle.CreateUsuarioLabel_activo}" for="activo" />
-                                        <h:inputText class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_activo}"/>
+                                        <h:inputText class="form-control" id="contraseña" value="#{usuarioController.selected.contraseña}" title="#{bundle.CreateUsuarioTitle_contraseña}" required="true" requiredMessage="El campo contraseña es obligatorio"/>
+                                        <h:outputLabel value="Status: " for="activo" />
+                                        <h:selectOneMenu class="form-control" id="activo" value="#{usuarioController.selected.activo}" title="#{bundle.CreateUsuarioTitle_activo}" required="true" requiredMessage="El campo status es obligatorio">
+                                            <f:selectItem itemValue = " " itemLabel = "--Seleccionar--" /> 
+                                            <f:selectItem itemValue = "1" itemLabel = "Activo" /> 
+                                            <f:selectItem itemValue = "0" itemLabel = "Inactivo" /> 
+                                        </h:selectOneMenu>
                                         <h:outputLabel value="Rol:" for="idRol" />
-                                        <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_idRol}">
+                                        <h:selectOneMenu class="form-control" id="idRol" value="#{usuarioController.selected.idRol}" title="#{bundle.CreateUsuarioTitle_idRol}" required="true" requiredMessage="El campo rol es obligatorio">
                                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
                                         </h:selectOneMenu>
                                     </h:panelGrid>
