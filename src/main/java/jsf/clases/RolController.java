@@ -17,6 +17,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import jsf.validadores.RolValidator;
+import jsf.validadores.ValidatorResult;
 
 @Named("rolController")
 @SessionScoped
@@ -82,8 +84,16 @@ public class RolController implements Serializable {
     public String create() {
         try {
             System.out.println(current);
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage("¡Rol creado con exito!");
+            ValidatorResult result = RolValidator.validar(current);
+            assert(result!=null);
+            if(result.isValid()){
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage("¡Rol creado con exito!");
+            }else{
+                assert(result.getError()!=null);
+                JsfUtil.addErrorMessage(result.getError());
+                return "List";
+            }
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
