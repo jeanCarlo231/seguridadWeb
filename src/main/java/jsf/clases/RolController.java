@@ -91,12 +91,13 @@ public class RolController implements Serializable {
                 JsfUtil.addSuccessMessage("¡Rol creado con exito!");
             }else{
                 assert(result.getError()!=null);
+                JsfUtil.addErrorMessage("NO se pudo crear el rol");
                 JsfUtil.addErrorMessage(result.getError());
                 return "List";
             }
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            JsfUtil.addErrorMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
             return "List";
         }
     }
@@ -117,12 +118,13 @@ public class RolController implements Serializable {
                 JsfUtil.addSuccessMessage("¡Rol editado con exito!");
             }else{
                 assert(result.getError()!=null);
+                JsfUtil.addErrorMessage("NO se pudo editar el rol");
                 JsfUtil.addErrorMessage(result.getError());
                 return "Edit";
             }
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            JsfUtil.addErrorMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
             return "List";
         }
     }

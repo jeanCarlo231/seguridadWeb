@@ -90,6 +90,7 @@ public class CuentaBancariaController implements Serializable {
                 JsfUtil.addSuccessMessage("¡Cuenta creada con exito!");
                 return prepareCreate();
             }
+            JsfUtil.addErrorMessage("NO se pudo crear la cuenta bancaria!");
             JsfUtil.addErrorMessage(result.getError());
             return "List";
         } catch (Exception e) {
@@ -106,8 +107,14 @@ public class CuentaBancariaController implements Serializable {
 
     public String update() {
         try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage("¡Cuenta editada con exito!");
+            ValidatorResult result = CuentaBancariaValidator.validar(current);
+            if(result.isValid() && result.getError()==null){
+                getFacade().edit(current);
+                JsfUtil.addSuccessMessage("¡Cuenta editada con exito!");
+                return "List";
+            }
+            JsfUtil.addErrorMessage("NO se pudo editar la cuenta bancaria!");
+            JsfUtil.addErrorMessage(result.getError());
             return "List";
         } catch (Exception e) {
             JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
