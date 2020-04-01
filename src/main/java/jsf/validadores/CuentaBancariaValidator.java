@@ -18,10 +18,10 @@ public class CuentaBancariaValidator {
     
     public static ValidatorResult validar(CuentaBancaria cuentaBancaria){
         try{
-            validarNumeroTarjeta(cuentaBancaria.getNumeroTarjeta());
-            validarFechaExp(cuentaBancaria.getFechaExpiracion());
-            validarCVC(cuentaBancaria.getNumeroTarjeta(), cuentaBancaria.getCvc());
             validarBanco(cuentaBancaria.getNombreBanco());
+            validarNumeroTarjeta(cuentaBancaria.getNumeroTarjeta());
+            validarCVC(cuentaBancaria.getNumeroTarjeta(), cuentaBancaria.getCvc());
+            validarFechaExp(cuentaBancaria.getFechaExpiracion());
             return new ValidatorResult(null, true);
         }catch(ValidatorException ve){
             return new ValidatorResult(ve.getMessage(),false);

@@ -17,6 +17,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import jsf.validadores.CuentaBancariaValidator;
+import jsf.validadores.ValidatorResult;
 
 @Named("cuentaBancariaController")
 @SessionScoped
@@ -24,6 +26,7 @@ public class CuentaBancariaController implements Serializable {
 
     private CuentaBancaria current;
     private DataModel items = null;
+    
     @EJB
     private beans.sessions.CuentaBancariaFacade ejbFacade;
     private PaginationHelper pagination;
@@ -81,11 +84,16 @@ public class CuentaBancariaController implements Serializable {
 
     public String create() {
         try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage("¡Cuenta creada con exito!");
-            return prepareCreate();
+            ValidatorResult result = CuentaBancariaValidator.validar(current);
+            if(result.isValid() && result.getError()==null){
+                getFacade().create(current);
+                JsfUtil.addSuccessMessage("¡Cuenta creada con exito!");
+                return prepareCreate();
+            }
+            JsfUtil.addErrorMessage(result.getError());
+            return "List";
         } catch (Exception e) {
-            JsfUtil.addSuccessMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
+            JsfUtil.addErrorMessage("¡Lo sentimos la operación no pudo completarse intente mas tarde!");
             return "List";
         }
     }
